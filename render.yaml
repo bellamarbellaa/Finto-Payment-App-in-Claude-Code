@@ -1,0 +1,56 @@
+# Render Blueprint — everything about the API's deployment except its secrets.
+#
+# Rather than filling in a dozen fields by hand, point Render at this file:
+#   Render dashboard → New → Blueprint → pick this repository.
+#
+# Values marked `sync: false` are secrets; Render prompts for them and stores
+# them encrypted. They are deliberately not in this file, because this file is
+# public.
+services:
+  - type: web
+    name: finto-api
+    runtime: node
+    plan: free
+    region: singapore          # closest Render offers to the Seoul database
+    rootDir: finto-backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # Supabase session pooler (IPv4). The direct host is IPv6-only and many
+      # cloud hosts cannot reach it.
+      - key: DATABASE_URL
+        sync: false
+
+      - key: JWT_ACCESS_SECRET
+        generateValue: true    # Render generates a strong random value
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true
+
+      - key: ACCESS_TOKEN_TTL
+        value: 15m
+      - key: REFRESH_TOKEN_TTL_DAYS
+        value: 30
+
+      # The web app is served from a different domain, so the refresh cookie
+      # must be SameSite=None — a Lax cookie is never sent cross-site, and
+      # logins would silently fail to survive a reload.
+      - key: COOKIE_SECURE
+        value: true
+      - key: COOKIE_SAMESITE
+        value: none
+
+      # Set to the Vercel address once the web app is deployed.
+      - key: CORS_ORIGINS
+        sync: false
+
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: APP_LINK_SCHEME
+        value: finto

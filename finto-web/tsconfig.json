@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      /* Mirrors the alias in vite.config.ts so the editor, tsc and the bundler
+         all resolve the shared client to the same source file. */
+      "@finto/api-client": ["../finto-backend/packages/api-client/src/index.ts"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["src", "vite.config.ts"]
+}

@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9EBE6;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#14301A}a:hover{color:#0B0C0B}
+*{box-sizing:border-box}
+.fscroll{overflow-y:auto;scrollbar-width:none}
+.fscroll::-webkit-scrollbar{display:none}
+@keyframes fdash{0%{transform:translateX(-100%)}100%{transform:translateX(180%)}}
+@keyframes fpulse{0%,100%{opacity:.45}50%{opacity:.9}}
+@keyframes fpop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes fscan{0%{top:34px}50%{top:206px}100%{top:34px}}
+@keyframes fup{0%{transform:translateY(14px);opacity:0}100%{transform:translateY(0);opacity:1}}
+</style>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#A9EE68"/><g fill="#0B0C0B"><circle cx="76" cy="76" r="15"/><circle cx="124" cy="76" r="15"/><circle cx="76" cy="124" r="15"/><circle cx="124" cy="124" r="15"/></g></svg></template>
+</helmet>
+
+<div style="min-height:100vh;padding:44px 40px 64px;display:flex;flex-direction:column;align-items:center;gap:28px">
+
+  <div style="width:100%;max-width:1180px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="6" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="6" cy="16" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="16" r="3.7" fill="#0B0C0B"></circle></svg>
+        <span style="font-size:22px;font-weight:800;letter-spacing:-.03em;color:#0B0C0B">Finto</span>
+        <span style="margin-left:6px;padding:4px 9px;border-radius:999px;background:#A9EE68;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#14301A">Mobile</span>
+      </div>
+      <p style="margin:0;max-width:520px;font-size:13.5px;line-height:1.6;color:#6B726C;text-wrap:pretty">High-fidelity prototype, 390 × 844. The flows are wired — tap through onboarding, login, send money, activity and card controls. Use the rail to jump to any screen or alternative state.</p>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div style="display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid #E0E3DD;font-size:12px;font-weight:600;color:#3F453F">
+        <span style="width:9px;height:9px;border-radius:3px;background:#A9EE68"></span>Lime #A9EE68
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;background:#fff;border:1px solid #E0E3DD;font-size:12px;font-weight:600;color:#3F453F">
+        <span style="width:9px;height:9px;border-radius:3px;background:#14301A"></span>Forest #14301A
+      </div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1180px;display:flex;gap:40px;align-items:flex-start;justify-content:center;flex-wrap:wrap">
+
+    <!-- ============ DEVICE ============ -->
+    <div style="width:414px;height:868px;flex:none;border-radius:58px;background:#0B0C0B;padding:12px;box-shadow:0 40px 80px -30px rgba(11,12,11,.45),0 0 0 1px rgba(11,12,11,.6);position:sticky;top:24px">
+      <div style="width:390px;height:844px;border-radius:46px;overflow:hidden;background:#F6F7F4;position:relative;display:flex;flex-direction:column">
+
+        <!-- status bar -->
+        <div style="height:50px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:14px 30px 0;position:relative;z-index:5">
+          <span style="font-size:14px;font-weight:700;color:#0B0C0B;letter-spacing:-.01em">9:41</span>
+          <div style="position:absolute;left:50%;top:8px;transform:translateX(-50%);width:104px;height:30px;border-radius:999px;background:#0B0C0B"></div>
+          <div style="display:flex;align-items:flex-end;gap:5px">
+            <div style="display:flex;align-items:flex-end;gap:2px">
+              <span style="width:3px;height:5px;border-radius:1px;background:#0B0C0B"></span>
+              <span style="width:3px;height:8px;border-radius:1px;background:#0B0C0B"></span>
+              <span style="width:3px;height:11px;border-radius:1px;background:#0B0C0B"></span>
+              <span style="width:3px;height:14px;border-radius:1px;background:#0B0C0B"></span>
+            </div>
+            <svg width="16" height="14" viewBox="0 0 16 14" fill="none" style="margin:0 1px"><path d="M1 5.2C3 3.2 5.4 2.2 8 2.2s5 1 7 3" stroke="#0B0C0B" stroke-width="1.6" stroke-linecap="round"></path><path d="M3.6 8c1.3-1.3 2.8-2 4.4-2s3.1.7 4.4 2" stroke="#0B0C0B" stroke-width="1.6" stroke-linecap="round"></path><circle cx="8" cy="11.4" r="1.4" fill="#0B0C0B"></circle></svg>
+            <div style="width:24px;height:12px;border-radius:3.5px;border:1.4px solid #0B0C0B;padding:1.6px;display:flex"><span style="flex:1;border-radius:1.6px;background:#0B0C0B"></span></div>
+          </div>
+        </div>
+
+        <!-- ======== SPLASH ======== -->
+        <sc-if value="{{ isSplash }}" hint-placeholder-val="{{ true }}">
+          <div data-screen-label="Splash" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:0 40px 60px">
+            <div style="animation:fpop .5s cubic-bezier(.2,.9,.3,1) both">
+              <svg width="72" height="72" viewBox="0 0 22 22"><circle cx="6" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="6" cy="16" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="16" r="3.7" fill="#0B0C0B"></circle></svg>
+            </div>
+            <div style="font-size:40px;font-weight:800;letter-spacing:-.045em;color:#0B0C0B">Finto</div>
+            <div style="width:132px;height:3px;border-radius:2px;background:#E0E3DD;overflow:hidden;position:relative">
+              <span style="position:absolute;inset:0;width:60%;border-radius:2px;background:#A9EE68;animation:fdash 1.3s ease-in-out infinite"></span>
+            </div>
+            <button onClick="{{ goOb }}" style="position:absolute;bottom:52px;left:32px;right:32px;height:40px;border:none;background:none;font-family:Manrope;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:#9AA09A;cursor:pointer">Tap to continue</button>
+          </div>
+        </sc-if>
+
+        <!-- ======== ONBOARDING ======== -->
+        <sc-if value="{{ isOb }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Onboarding" style="flex:1;display:flex;flex-direction:column;background:#F6F7F4">
+            <div style="flex:1;margin:8px 20px 0;border-radius:32px;background:#DCF5B8;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center">
+              <div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 20% 0%,rgba(255,255,255,.55),transparent 60%)"></div>
+              <div style="width:214px;height:300px;border-radius:26px;background:#fff;box-shadow:0 26px 50px -22px rgba(11,12,11,.35);padding:20px;display:flex;flex-direction:column;gap:14px;position:relative;animation:fup .5s ease both">
+                <div style="display:flex;align-items:center;gap:9px">
+                  <div style="width:34px;height:34px;border-radius:11px;background:#14301A;display:flex;align-items:center;justify-content:center">
+                    <svg width="15" height="15" viewBox="0 0 22 22"><circle cx="6" cy="6" r="3.7" fill="#A9EE68"></circle><circle cx="16" cy="6" r="3.7" fill="#A9EE68"></circle><circle cx="6" cy="16" r="3.7" fill="#A9EE68"></circle><circle cx="16" cy="16" r="3.7" fill="#A9EE68"></circle></svg>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:3px">
+                    <span style="font-size:12px;font-weight:700;color:#0B0C0B">{{ obCardTitle }}</span>
+                    <span style="font-size:10.5px;font-weight:500;color:#9AA09A">{{ obCardSub }}</span>
+                  </div>
+                </div>
+                <div style="height:1px;background:#EFF1ED"></div>
+                <div style="display:flex;flex-direction:column;gap:5px">
+                  <span style="font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9AA09A">{{ obMetaLabel }}</span>
+                  <span style="font-size:27px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B;font-variant-numeric:tabular-nums">{{ obMetaValue }}</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px">
+                  <div style="height:38px;border-radius:12px;background:#F6F7F4;display:flex;align-items:center;padding:0 12px;gap:9px">
+                    <span style="width:20px;height:20px;border-radius:6px;background:#DCF5B8"></span>
+                    <span style="flex:1;height:6px;border-radius:3px;background:#E5E8E2"></span>
+                  </div>
+                  <div style="height:38px;border-radius:12px;background:#F6F7F4;display:flex;align-items:center;padding:0 12px;gap:9px">
+                    <span style="width:20px;height:20px;border-radius:6px;background:#E5E8E2"></span>
+                    <span style="flex:1;height:6px;border-radius:3px;background:#E5E8E2"></span>
+                  </div>
+                </div>
+                <div style="margin-top:auto;height:40px;border-radius:12px;background:#A9EE68;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:#14301A">{{ obCta }}</div>
+              </div>
+            </div>
+            <div style="padding:26px 28px 30px;display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;gap:6px">
+                <span style="width:{{ obDot0 }};height:5px;border-radius:3px;background:{{ obDot0c }};transition:.3s"></span>
+                <span style="width:{{ obDot1 }};height:5px;border-radius:3px;background:{{ obDot1c }};transition:.3s"></span>
+                <span style="width:{{ obDot2 }};height:5px;border-radius:3px;background:{{ obDot2c }};transition:.3s"></span>
+              </div>
+              <h1 style="margin:0;font-size:31px;line-height:1.08;font-weight:800;letter-spacing:-.04em;color:#0B0C0B;text-wrap:balance">{{ obTitle }}</h1>
+              <p style="margin:0;font-size:14.5px;line-height:1.55;font-weight:500;color:#6B726C;text-wrap:pretty">{{ obBody }}</p>
+              <div style="display:flex;gap:10px;margin-top:4px">
+                <button onClick="{{ obNext }}" style="flex:1;height:54px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15px;font-weight:700;color:#14301A;cursor:pointer;transition:.2s" style-hover="background:#96E44F">{{ obBtn }}</button>
+                <button onClick="{{ goLogin }}" style="width:104px;height:54px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:600;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">Log in</button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== LOGIN ======== -->
+        <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Login" class="fscroll" style="flex:1;background:#F6F7F4;padding:14px 28px 32px;display:flex;flex-direction:column">
+            <svg width="26" height="26" viewBox="0 0 22 22" style="margin-bottom:34px"><circle cx="6" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="6" cy="16" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="16" r="3.7" fill="#0B0C0B"></circle></svg>
+            <h1 style="margin:0 0 8px;font-size:30px;font-weight:800;letter-spacing:-.04em;color:#0B0C0B">Welcome back</h1>
+            <p style="margin:0 0 26px;font-size:14.5px;font-weight:500;color:#6B726C">Log in to your Finto account.</p>
+
+            <div style="display:flex;background:#EDEFEA;border-radius:14px;padding:4px;margin-bottom:18px">
+              <button onClick="{{ setMethodEmail }}" style="flex:1;height:38px;border:none;border-radius:10px;background:{{ mEmailBg }};box-shadow:{{ mEmailSh }};font-family:Manrope;font-size:13.5px;font-weight:600;color:{{ mEmailFg }};cursor:pointer">Email</button>
+              <button onClick="{{ setMethodPhone }}" style="flex:1;height:38px;border:none;border-radius:10px;background:{{ mPhoneBg }};box-shadow:{{ mPhoneSh }};font-family:Manrope;font-size:13.5px;font-weight:600;color:{{ mPhoneFg }};cursor:pointer">Phone</button>
+            </div>
+
+            <label style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9AA09A;margin-bottom:8px">{{ loginLabel }}</label>
+            <input value="{{ loginId }}" onChange="{{ setLoginId }}" style="height:56px;border-radius:16px;border:1px solid #DDE1D9;background:#fff;padding:0 16px;font-family:Manrope;font-size:15.5px;font-weight:600;color:#0B0C0B;margin-bottom:16px;outline:none" style-focus="border-color:#0B0C0B">
+
+            <label style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9AA09A;margin-bottom:8px">Password</label>
+            <div style="height:56px;border-radius:16px;border:1px solid {{ pwBorder }};background:#fff;display:flex;align-items:center;padding:0 8px 0 16px;margin-bottom:10px">
+              <input value="{{ pw }}" onChange="{{ setPw }}" type="{{ pwType }}" placeholder="••••••••" style="flex:1;border:none;outline:none;background:none;font-family:Manrope;font-size:15.5px;font-weight:600;color:#0B0C0B;letter-spacing:.06em">
+              <button onClick="{{ togglePw }}" style="height:40px;padding:0 12px;border:none;border-radius:10px;background:#F3F5F0;font-family:Manrope;font-size:12.5px;font-weight:700;color:#3F453F;cursor:pointer">{{ pwToggleLabel }}</button>
+            </div>
+            <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:11px 13px;border-radius:12px;background:#FDECEA">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.2" stroke="#C93A2E" stroke-width="1.6"></circle><path d="M10 6v5" stroke="#C93A2E" stroke-width="1.8" stroke-linecap="round"></path><circle cx="10" cy="13.8" r="1.05" fill="#C93A2E"></circle></svg>
+                <span style="font-size:12.5px;font-weight:600;color:#C93A2E">Incorrect password. 4 attempts left.</span>
+              </div>
+            </sc-if>
+            <button onClick="{{ toggleLoginError }}" style="align-self:flex-start;margin-bottom:24px;border:none;background:none;padding:0;font-family:Manrope;font-size:13px;font-weight:700;color:#14301A;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Forgot password?</button>
+
+            <button onClick="{{ doLogin }}" style="height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15.5px;font-weight:700;color:#14301A;cursor:pointer;margin-bottom:12px" style-hover="background:#96E44F">Log in</button>
+            <button onClick="{{ doLogin }}" style="height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:600;color:#0B0C0B;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#F1F3EE">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 21c-1.6 0-3-1.1-4.2-3.3C6.6 15.5 6 13.2 6 10.8 6 8 7.6 6 10 6c1 0 1.7.4 2 .6.3.2.4.2.6 0 .3-.2 1-.6 2-.6 2 0 3.4 1.4 3.8 3.4-1.6.7-2.4 2-2.4 3.6 0 1.8 1 3 2.6 3.6-.7 2-2.2 3.4-3.6 3.4-.9 0-1.5-.4-2-.6-.3-.2-.5-.1-.7 0-.3.2-.9.6-1.8.6z" fill="#0B0C0B"></path><path d="M14.5 2.2c.2 1.4-.8 3.1-2.4 3.3-.2-1.3.8-2.9 2.4-3.3z" fill="#0B0C0B"></path></svg>
+              Continue with Apple
+            </button>
+            <div style="margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:14px">
+              <button onClick="{{ doLogin }}" style="width:66px;height:66px;border-radius:22px;border:1px solid #DDE1D9;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="#0B0C0B" stroke-width="1.7" stroke-linecap="round"><path d="M6 12a10 10 0 0120 0"></path><path d="M11 14a5 5 0 0110 0v3a9 9 0 01-1.4 5"></path><path d="M16 14v5c0 2-.4 4-1.3 5.6"></path><path d="M6.5 17.5c.3-1.4.5-3 .5-4.2"></path><path d="M25.5 15c0 3.4-.6 6.4-2 8.8"></path></svg>
+              </button>
+              <span style="font-size:13px;font-weight:600;color:#6B726C">Log in with Face ID</span>
+            </div>
+            <p style="margin:26px 0 0;text-align:center;font-size:13px;font-weight:500;color:#9AA09A">No account? <span style="font-weight:700;color:#14301A">Open one in 3 minutes</span></p>
+          </div>
+        </sc-if>
+
+        <!-- ======== HOME ======== -->
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Home" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 108px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0 20px">
+              <div style="display:flex;align-items:center;gap:11px">
+                <div style="width:42px;height:42px;border-radius:14px;background:#14301A;display:flex;align-items:center;justify-content:center;font-size:14.5px;font-weight:700;color:#A9EE68">SM</div>
+                <div style="display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:12.5px;font-weight:600;color:#9AA09A">Good morning</span>
+                  <span style="font-size:15.5px;font-weight:700;letter-spacing:-.02em;color:#0B0C0B">{{ userName }}</span>
+                </div>
+              </div>
+              <button onClick="{{ goNotifs }}" style="position:relative;width:44px;height:44px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.8" stroke-linecap="round"><path d="M18 15V10a6 6 0 10-12 0v5l-1.5 2.5h15L18 15z"></path><path d="M9.5 20a2.6 2.6 0 005 0"></path></svg>
+                <span style="position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:5px;background:#A9EE68;border:1.6px solid #fff"></span>
+              </button>
+            </div>
+
+            <div style="border-radius:28px;background:#14301A;padding:24px 22px 22px;position:relative;overflow:hidden">
+              <div style="position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;background:rgba(169,238,104,.13)"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;position:relative">
+                <span style="font-size:12.5px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.6)">Total balance · USD</span>
+                <button onClick="{{ toggleBalance }}" style="border:none;background:rgba(255,255,255,.1);border-radius:9px;height:28px;padding:0 10px;font-family:Manrope;font-size:11.5px;font-weight:700;color:#fff;cursor:pointer">{{ balToggle }}</button>
+              </div>
+              <div style="margin-top:10px;font-size:42px;font-weight:800;letter-spacing:-.045em;color:#fff;font-variant-numeric:tabular-nums">{{ balanceDisplay }}</div>
+              <div style="margin-top:12px;display:flex;align-items:center;gap:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55)">Available now</span>
+                  <span style="font-size:15px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums">$2,310.55</span>
+                </div>
+                <div style="width:1px;height:30px;background:rgba(255,255,255,.14)"></div>
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,.55)">Pending out</span>
+                  <span style="font-size:15px;font-weight:700;color:#A9EE68;font-variant-numeric:tabular-nums">$140.25</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:16px">
+              <button onClick="{{ goSend }}" style="height:88px;border:1px solid #E4E7E1;border-radius:20px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-family:Manrope" style-hover="border-color:#0B0C0B">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
+                <span style="font-size:11.5px;font-weight:700;color:#0B0C0B">Send</span>
+              </button>
+              <button onClick="{{ goWallet }}" style="height:88px;border:1px solid #E4E7E1;border-radius:20px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-family:Manrope" style-hover="border-color:#0B0C0B">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M18 13l-6 6-6-6"></path></svg>
+                <span style="font-size:11.5px;font-weight:700;color:#0B0C0B">Add money</span>
+              </button>
+              <button onClick="{{ goPay }}" style="height:88px;border:1px solid #E4E7E1;border-radius:20px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-family:Manrope" style-hover="border-color:#0B0C0B">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="3"></rect><path d="M3.5 10.5h17"></path></svg>
+                <span style="font-size:11.5px;font-weight:700;color:#0B0C0B">Pay</span>
+              </button>
+              <button onClick="{{ goCards }}" style="height:88px;border:1px solid #E4E7E1;border-radius:20px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-family:Manrope" style-hover="border-color:#0B0C0B">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3.4"></rect><path d="M7 15h3"></path></svg>
+                <span style="font-size:11.5px;font-weight:700;color:#0B0C0B">Cards</span>
+              </button>
+            </div>
+
+            <div style="margin-top:18px;border-radius:22px;background:#DCF5B8;padding:18px 18px 16px;display:flex;align-items:center;gap:14px">
+              <div style="flex:1;display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#3F6B2E">Spent this month</span>
+                <span style="font-size:24px;font-weight:800;letter-spacing:-.035em;color:#14301A;font-variant-numeric:tabular-nums">$1,284.16</span>
+                <span style="font-size:12px;font-weight:600;color:#4C6B3D">18% less than February</span>
+              </div>
+              <div style="display:flex;align-items:flex-end;gap:5px;height:58px">
+                <span style="width:8px;height:38%;border-radius:3px;background:rgba(20,48,26,.22)"></span>
+                <span style="width:8px;height:58%;border-radius:3px;background:rgba(20,48,26,.22)"></span>
+                <span style="width:8px;height:46%;border-radius:3px;background:rgba(20,48,26,.22)"></span>
+                <span style="width:8px;height:74%;border-radius:3px;background:rgba(20,48,26,.22)"></span>
+                <span style="width:8px;height:100%;border-radius:3px;background:#14301A"></span>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px">
+              <span style="font-size:17px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Recent activity</span>
+              <button onClick="{{ goActivity }}" style="border:none;background:none;padding:0;font-family:Manrope;font-size:13px;font-weight:700;color:#14301A;cursor:pointer">See all</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ recent }}" as="tx" hint-placeholder-count="4">
+                <button onClick="{{ tx.open }}" style="border:1px solid #E4E7E1;border-radius:18px;background:#fff;padding:14px;display:flex;align-items:center;gap:13px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#C9CFC5">
+                  <span style="width:42px;height:42px;flex:none;border-radius:14px;background:{{ tx.tint }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:{{ tx.tintFg }}">{{ tx.initial }}</span>
+                  <span style="flex:1;display:flex;flex-direction:column;gap:3px;min-width:0">
+                    <span style="font-size:14.5px;font-weight:700;letter-spacing:-.015em;color:#0B0C0B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ tx.merchant }}</span>
+                    <span style="font-size:12px;font-weight:600;color:#9AA09A">{{ tx.meta }}</span>
+                  </span>
+                  <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                    <span style="font-size:15px;font-weight:700;color:{{ tx.amountColor }};font-variant-numeric:tabular-nums">{{ tx.amount }}</span>
+                    <sc-if value="{{ tx.showStatus }}" hint-placeholder-val="{{ false }}">
+                      <span style="padding:3px 8px;border-radius:7px;background:{{ tx.statusBg }};font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:{{ tx.statusFg }}">{{ tx.status }}</span>
+                    </sc-if>
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== PAY HUB ======== -->
+        <sc-if value="{{ isPay }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Pay" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 108px">
+            <h1 style="margin:14px 0 4px;font-size:28px;font-weight:800;letter-spacing:-.04em;color:#0B0C0B">Pay</h1>
+            <p style="margin:0 0 22px;font-size:14px;font-weight:500;color:#6B726C">Move money in seconds, no fees between Finto accounts.</p>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button onClick="{{ goSend }}" style="border:none;border-radius:22px;background:#14301A;padding:20px;display:flex;align-items:center;gap:14px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="background:#1B4325">
+                <span style="width:46px;height:46px;flex:none;border-radius:15px;background:#A9EE68;display:flex;align-items:center;justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
+                </span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:16px;font-weight:700;color:#fff">Send money</span>
+                  <span style="font-size:12.5px;font-weight:500;color:rgba(255,255,255,.6)">To a person, business or bank</span>
+                </span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+              <button onClick="{{ goRequest }}" style="border:1px solid #E4E7E1;border-radius:22px;background:#fff;padding:20px;display:flex;align-items:center;gap:14px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#0B0C0B">
+                <span style="width:46px;height:46px;flex:none;border-radius:15px;background:#F1F3EE;display:flex;align-items:center;justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M18 13l-6 6-6-6"></path></svg>
+                </span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:16px;font-weight:700;color:#0B0C0B">Request money</span>
+                  <span style="font-size:12.5px;font-weight:500;color:#9AA09A">Send a payment link or invoice</span>
+                </span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+              <button onClick="{{ goSend }}" style="border:1px solid #E4E7E1;border-radius:22px;background:#fff;padding:20px;display:flex;align-items:center;gap:14px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#0B0C0B">
+                <span style="width:46px;height:46px;flex:none;border-radius:15px;background:#F1F3EE;display:flex;align-items:center;justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"></path><path d="M9.5 20v-6h5v6"></path></svg>
+                </span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:16px;font-weight:700;color:#0B0C0B">Pay a business</span>
+                  <span style="font-size:12.5px;font-weight:500;color:#9AA09A">Invoices, subscriptions, suppliers</span>
+                </span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+              <button onClick="{{ goScan }}" style="border:1px solid #E4E7E1;border-radius:22px;background:#fff;padding:20px;display:flex;align-items:center;gap:14px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#0B0C0B">
+                <span style="width:46px;height:46px;flex:none;border-radius:15px;background:#F1F3EE;display:flex;align-items:center;justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V5.5A1.5 1.5 0 015.5 4H9"></path><path d="M15 4h3.5A1.5 1.5 0 0120 5.5V9"></path><path d="M20 15v3.5A1.5 1.5 0 0118.5 20H15"></path><path d="M9 20H5.5A1.5 1.5 0 014 18.5V15"></path><path d="M4 12h16"></path></svg>
+                </span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:16px;font-weight:700;color:#0B0C0B">Scan to pay</span>
+                  <span style="font-size:12.5px;font-weight:500;color:#9AA09A">Or show your own Finto QR</span>
+                </span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </div>
+
+            <div style="margin-top:26px;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9AA09A">Frequent</div>
+            <div style="display:flex;gap:10px;margin-top:13px;overflow-x:auto" class="fscroll">
+              <sc-for list="{{ people }}" as="p" hint-placeholder-count="4">
+                <button onClick="{{ p.pick }}" style="flex:none;width:86px;border:1px solid #E4E7E1;border-radius:20px;background:#fff;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;font-family:Manrope" style-hover="border-color:#0B0C0B">
+                  <span style="width:44px;height:44px;border-radius:15px;background:{{ p.tint }};display:flex;align-items:center;justify-content:center;font-size:14.5px;font-weight:800;color:{{ p.tintFg }}">{{ p.initials }}</span>
+                  <span style="font-size:11.5px;font-weight:700;color:#0B0C0B;text-align:center;line-height:1.25">{{ p.first }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <div style="margin-top:24px;border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:18px;display:flex;gap:14px;align-items:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7.5 3.4v5.1c0 4.4-3 8-7.5 9.5-4.5-1.5-7.5-5.1-7.5-9.5V6.4L12 3z"></path><path d="M9 12l2.2 2.2L15 10.4"></path></svg>
+              <p style="margin:0;font-size:12.5px;line-height:1.5;font-weight:600;color:#3F453F">Every payment is checked against your device and confirmed with Face ID before it leaves.</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== SCAN / MY QR ======== -->
+        <sc-if value="{{ isScan }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Scan to pay" style="flex:1;background:#0B0C0B;display:flex;flex-direction:column;padding:6px 20px 26px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 16px">
+              <button onClick="{{ goPay }}" style="width:42px;height:42px;border-radius:14px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:rgba(255,255,255,.16)">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#fff">{{ scanTitle }}</span>
+            </div>
+            <div style="display:flex;background:rgba(255,255,255,.1);border-radius:14px;padding:4px;margin-bottom:20px">
+              <button onClick="{{ setScanMode }}" style="flex:1;height:38px;border:none;border-radius:10px;background:{{ scanTabBg }};font-family:Manrope;font-size:13.5px;font-weight:700;color:{{ scanTabFg }};cursor:pointer">Scan a code</button>
+              <button onClick="{{ setQrMode }}" style="flex:1;height:38px;border:none;border-radius:10px;background:{{ qrTabBg }};font-family:Manrope;font-size:13.5px;font-weight:700;color:{{ qrTabFg }};cursor:pointer">My QR</button>
+            </div>
+
+            <sc-if value="{{ scanning }}" hint-placeholder-val="{{ true }}">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+                <div style="width:248px;height:248px;border-radius:34px;background:#171917;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                  <div style="position:absolute;inset:0;background:radial-gradient(70% 55% at 50% 45%,rgba(169,238,104,.12),transparent 70%)"></div>
+                  <div style="position:absolute;left:22px;top:22px;width:42px;height:42px;border-top:3px solid #A9EE68;border-left:3px solid #A9EE68;border-radius:14px 0 0 0"></div>
+                  <div style="position:absolute;right:22px;top:22px;width:42px;height:42px;border-top:3px solid #A9EE68;border-right:3px solid #A9EE68;border-radius:0 14px 0 0"></div>
+                  <div style="position:absolute;left:22px;bottom:22px;width:42px;height:42px;border-bottom:3px solid #A9EE68;border-left:3px solid #A9EE68;border-radius:0 0 0 14px"></div>
+                  <div style="position:absolute;right:22px;bottom:22px;width:42px;height:42px;border-bottom:3px solid #A9EE68;border-right:3px solid #A9EE68;border-radius:0 0 14px 0"></div>
+                  <div style="position:absolute;left:22px;right:22px;height:2px;background:#A9EE68;box-shadow:0 0 14px 2px rgba(169,238,104,.6);animation:fscan 2.2s ease-in-out infinite"></div>
+                </div>
+                <div style="text-align:center;display:flex;flex-direction:column;gap:8px;padding:0 24px">
+                  <span style="font-size:17px;font-weight:700;letter-spacing:-.02em;color:#fff">Point at a Finto QR</span>
+                  <span style="font-size:13.5px;font-weight:500;line-height:1.5;color:rgba(255,255,255,.55)">Works with any Finto checkout, invoice or personal code.</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:10px">
+                <button onClick="{{ scanFound }}" style="flex:1;height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15px;font-weight:700;color:#14301A;cursor:pointer" style-hover="background:#96E44F">Simulate a scan</button>
+                <button onClick="{{ setQrMode }}" style="width:120px;height:56px;border:1px solid rgba(255,255,255,.2);border-radius:16px;background:rgba(255,255,255,.06);font-family:Manrope;font-size:14.5px;font-weight:600;color:#fff;cursor:pointer">My code</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ showingQr }}" hint-placeholder-val="{{ false }}">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px">
+                <div style="background:#fff;border-radius:28px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:16px;width:264px">
+                  <div style="display:grid;grid-template-columns:repeat(17,1fr);gap:2px;width:200px">
+                    <sc-for list="{{ qrCells }}" as="c" hint-placeholder-count="17">
+                      <span style="aspect-ratio:1;border-radius:1px;background:{{ c.fill }}"></span>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px">
+                    <svg width="15" height="15" viewBox="0 0 22 22"><circle cx="6" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="6" r="3.7" fill="#0B0C0B"></circle><circle cx="6" cy="16" r="3.7" fill="#0B0C0B"></circle><circle cx="16" cy="16" r="3.7" fill="#0B0C0B"></circle></svg>
+                    <span style="font-size:14.5px;font-weight:800;letter-spacing:-.02em;color:#0B0C0B">@sofia</span>
+                  </div>
+                </div>
+                <span style="font-size:13.5px;font-weight:500;line-height:1.5;text-align:center;color:rgba(255,255,255,.6);padding:0 30px">Anyone with Finto can scan this to pay you instantly, with no fee.</span>
+              </div>
+              <div style="display:flex;gap:10px">
+                <button onClick="{{ goRequest }}" style="flex:1;height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15px;font-weight:700;color:#14301A;cursor:pointer" style-hover="background:#96E44F">Add an amount</button>
+                <button style="width:120px;height:56px;border:1px solid rgba(255,255,255,.2);border-radius:16px;background:rgba(255,255,255,.06);font-family:Manrope;font-size:14.5px;font-weight:600;color:#fff;cursor:pointer">Share</button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ======== SCAN RESULT ======== -->
+        <sc-if value="{{ isScanFound }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Scan · confirm" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;padding:6px 20px 26px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 20px">
+              <button onClick="{{ goScan }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Confirm payment</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+              <span style="width:66px;height:66px;border-radius:22px;background:#14301A;display:flex;align-items:center;justify-content:center">
+                <svg width="27" height="27" viewBox="0 0 22 22"><circle cx="6" cy="6" r="3.7" fill="#A9EE68"></circle><circle cx="16" cy="6" r="3.7" fill="#A9EE68"></circle><circle cx="6" cy="16" r="3.7" fill="#A9EE68"></circle><circle cx="16" cy="16" r="3.7" fill="#A9EE68"></circle></svg>
+              </span>
+              <span style="padding:5px 11px;border-radius:9px;background:#DCF5B8;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#2F5B1E">Verified merchant</span>
+              <span style="font-size:19px;font-weight:800;letter-spacing:-.03em;color:#0B0C0B">Finto Store · Lisbon</span>
+              <span style="font-size:46px;font-weight:800;letter-spacing:-.045em;color:#0B0C0B;font-variant-numeric:tabular-nums">$64.00</span>
+              <span style="font-size:13px;font-weight:600;color:#9AA09A">Order #FS-2291 · No fee</span>
+            </div>
+            <div style="border-radius:20px;background:#fff;border:1px solid #E4E7E1;padding:6px 16px;margin-bottom:14px">
+              <div style="display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Pay from</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Main · USD ····4429</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:13px 0">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Arrives</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Instantly</span>
+              </div>
+            </div>
+            <button onClick="{{ confirmScan }}" style="height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15.5px;font-weight:700;color:#14301A;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="background:#96E44F">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="2" stroke-linecap="round"><path d="M12 3l7.5 3.4v5.1c0 4.4-3 8-7.5 9.5-4.5-1.5-7.5-5.1-7.5-9.5V6.4L12 3z"></path></svg>
+              Pay $64.00 with Face ID
+            </button>
+          </div>
+        </sc-if>
+
+        <!-- ======== REQUEST: AMOUNT ======== -->
+        <sc-if value="{{ isRequest }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Request money" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;padding:6px 20px 26px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 16px">
+              <button onClick="{{ goPay }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Request money</span>
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:14px">
+              <sc-for list="{{ reqTargets }}" as="t" hint-placeholder-count="2">
+                <button onClick="{{ t.pick }}" style="flex:1;height:52px;border:1px solid {{ t.border }};border-radius:16px;background:{{ t.bg }};font-family:Manrope;font-size:13.5px;font-weight:700;color:{{ t.fg }};cursor:pointer">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ reqToPerson }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:11px;padding:12px 14px;border-radius:18px;background:#fff;border:1px solid #E4E7E1">
+                <span style="width:38px;height:38px;border-radius:12px;background:{{ recTint }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:{{ recTintFg }}">{{ recInitials }}</span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:2px">
+                  <span style="font-size:14px;font-weight:700;color:#0B0C0B">{{ recName }}</span>
+                  <span style="font-size:11.5px;font-weight:600;color:#9AA09A">{{ recHandle }}</span>
+                </span>
+                <button onClick="{{ goSend }}" style="height:34px;padding:0 12px;border:none;border-radius:11px;background:#F1F3EE;font-family:Manrope;font-size:12.5px;font-weight:700;color:#3F453F;cursor:pointer">Change</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ reqToLink }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:11px;padding:14px;border-radius:18px;background:#DCF5B8">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F5B1E" stroke-width="1.9" stroke-linecap="round"><path d="M9.5 14.5l5-5"></path><path d="M12.5 7.5l1.5-1.5a3.5 3.5 0 015 5L17.5 12.5"></path><path d="M11.5 16.5L10 18a3.5 3.5 0 01-5-5l1.5-1.5"></path></svg>
+                <span style="flex:1;font-size:12.5px;font-weight:600;line-height:1.45;color:#14301A">We'll create a payment link anyone can open — no Finto account needed.</span>
+              </div>
+            </sc-if>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+              <div style="display:flex;align-items:flex-start;gap:4px">
+                <span style="font-size:26px;font-weight:700;color:#9AA09A;margin-top:10px">$</span>
+                <span style="font-size:60px;line-height:1;font-weight:800;letter-spacing:-.05em;color:#0B0C0B;font-variant-numeric:tabular-nums">{{ amountDisplay }}</span>
+              </div>
+              <span style="font-size:13px;font-weight:600;color:#9AA09A">Add a note · Design retainer</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+              <button onClick="{{ key1 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">1</button>
+              <button onClick="{{ key2 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">2</button>
+              <button onClick="{{ key3 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">3</button>
+              <button onClick="{{ key4 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">4</button>
+              <button onClick="{{ key5 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">5</button>
+              <button onClick="{{ key6 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">6</button>
+              <button onClick="{{ key7 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">7</button>
+              <button onClick="{{ key8 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">8</button>
+              <button onClick="{{ key9 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">9</button>
+              <button onClick="{{ keyDot }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">.</button>
+              <button onClick="{{ key0 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">0</button>
+              <button onClick="{{ keyDel }}" style="height:56px;border:none;border-radius:16px;background:#EDEFEA;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#E2E5DE">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><path d="M9 5h11v14H9L3 12l6-7z"></path><path d="M13 10l4 4M17 10l-4 4"></path></svg>
+              </button>
+            </div>
+            <button onClick="{{ sendRequest }}" style="height:56px;border:none;border-radius:16px;background:{{ reqCtaBg }};font-family:Manrope;font-size:15.5px;font-weight:700;color:{{ reqCtaFg }};cursor:pointer">{{ reqCta }}</button>
+          </div>
+        </sc-if>
+
+        <!-- ======== REQUEST SENT ======== -->
+        <sc-if value="{{ isRequestSent }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Request sent" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;padding:24px 24px 28px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center">
+              <div style="width:96px;height:96px;border-radius:34px;background:#DCF5B8;display:flex;align-items:center;justify-content:center;animation:fpop .45s cubic-bezier(.2,.9,.3,1) both">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2F5B1E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"></path><path d="M18 13l-6 6-6-6"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <span style="font-size:26px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Request sent</span>
+                <span style="font-size:15px;font-weight:500;line-height:1.5;color:#6B726C">{{ reqSentBody }}</span>
+              </div>
+              <div style="width:100%;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #E4E7E1;display:flex;align-items:center;gap:11px">
+                <span style="flex:1;text-align:left;font-size:12.5px;font-weight:700;color:#3F453F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">finto.com/pay/sofia/{{ reqSlug }}</span>
+                <span style="padding:7px 11px;border-radius:10px;background:#F1F3EE;font-size:12px;font-weight:700;color:#0B0C0B">Copy</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button onClick="{{ goHome }}" style="height:56px;border:none;border-radius:16px;background:#14301A;font-family:Manrope;font-size:15.5px;font-weight:700;color:#fff;cursor:pointer" style-hover="background:#1B4325">Back to home</button>
+              <button onClick="{{ goActivity }}" style="height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:600;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">View pending requests</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== SEND: RECIPIENT ======== -->
+        <sc-if value="{{ isSendPick }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Send · Recipient" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 32px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 18px">
+              <button onClick="{{ goPay }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Send to</span>
+              <span style="margin-left:auto;font-size:12px;font-weight:700;color:#9AA09A">Step 1 of 3</span>
+            </div>
+            <div style="height:52px;border-radius:16px;background:#fff;border:1px solid #E4E7E1;display:flex;align-items:center;gap:10px;padding:0 15px;margin-bottom:18px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA09A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.4"></circle><path d="M16 16l4 4"></path></svg>
+              <input value="{{ query }}" onChange="{{ setQuery }}" placeholder="Name, @finto tag or IBAN" style="flex:1;border:none;outline:none;background:none;font-family:Manrope;font-size:14.5px;font-weight:600;color:#0B0C0B">
+            </div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9AA09A;margin-bottom:11px">Recent recipients</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ filteredPeople }}" as="p" hint-placeholder-count="5">
+                <button onClick="{{ p.pick }}" style="border:1px solid #E4E7E1;border-radius:18px;background:#fff;padding:13px 15px;display:flex;align-items:center;gap:13px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#0B0C0B">
+                  <span style="width:42px;height:42px;flex:none;border-radius:14px;background:{{ p.tint }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:{{ p.tintFg }}">{{ p.initials }}</span>
+                  <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                    <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">{{ p.name }}</span>
+                    <span style="font-size:12px;font-weight:600;color:#9AA09A">{{ p.handle }}</span>
+                  </span>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+                </button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ noPeople }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:38px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:0 24px">
+                <div style="width:64px;height:64px;border-radius:22px;background:#EDEFEA;display:flex;align-items:center;justify-content:center">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9AA09A" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.4"></circle><path d="M16 16l4 4"></path></svg>
+                </div>
+                <span style="font-size:16px;font-weight:800;color:#0B0C0B">No match</span>
+                <span style="font-size:13.5px;font-weight:500;line-height:1.5;color:#6B726C">We couldn't find anyone by that name. Try their @finto tag or invite them.</span>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ======== SEND: AMOUNT ======== -->
+        <sc-if value="{{ isSendAmount }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Send · Amount" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;padding:6px 20px 26px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 16px">
+              <button onClick="{{ goSend }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Amount</span>
+              <span style="margin-left:auto;font-size:12px;font-weight:700;color:#9AA09A">Step 2 of 3</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:11px;padding:12px 14px;border-radius:18px;background:#fff;border:1px solid #E4E7E1">
+              <span style="width:38px;height:38px;border-radius:12px;background:{{ recTint }};display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:{{ recTintFg }}">{{ recInitials }}</span>
+              <span style="display:flex;flex-direction:column;gap:2px">
+                <span style="font-size:14px;font-weight:700;color:#0B0C0B">{{ recName }}</span>
+                <span style="font-size:11.5px;font-weight:600;color:#9AA09A">{{ recHandle }}</span>
+              </span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+              <div style="display:flex;align-items:flex-start;gap:4px">
+                <span style="font-size:26px;font-weight:700;color:#9AA09A;margin-top:10px">$</span>
+                <span style="font-size:60px;line-height:1;font-weight:800;letter-spacing:-.05em;color:{{ amountColor }};font-variant-numeric:tabular-nums">{{ amountDisplay }}</span>
+              </div>
+              <span style="font-size:13px;font-weight:600;color:#9AA09A">Available $2,310.55 · No fee</span>
+              <sc-if value="{{ overLimit }}" hint-placeholder-val="{{ false }}">
+                <span style="padding:7px 12px;border-radius:10px;background:#FDECEA;font-size:12.5px;font-weight:700;color:#C93A2E">Above your available balance</span>
+              </sc-if>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px">
+              <button onClick="{{ key1 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">1</button>
+              <button onClick="{{ key2 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">2</button>
+              <button onClick="{{ key3 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">3</button>
+              <button onClick="{{ key4 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">4</button>
+              <button onClick="{{ key5 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">5</button>
+              <button onClick="{{ key6 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">6</button>
+              <button onClick="{{ key7 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">7</button>
+              <button onClick="{{ key8 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">8</button>
+              <button onClick="{{ key9 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">9</button>
+              <button onClick="{{ keyDot }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">.</button>
+              <button onClick="{{ key0 }}" style="height:56px;border:none;border-radius:16px;background:#fff;font-family:Manrope;font-size:22px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#EDEFEA">0</button>
+              <button onClick="{{ keyDel }}" style="height:56px;border:none;border-radius:16px;background:#EDEFEA;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#E2E5DE">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><path d="M9 5h11v14H9L3 12l6-7z"></path><path d="M13 10l4 4M17 10l-4 4"></path></svg>
+              </button>
+            </div>
+            <button onClick="{{ goReview }}" style="height:56px;border:none;border-radius:16px;background:{{ continueBg }};font-family:Manrope;font-size:15.5px;font-weight:700;color:{{ continueFg }};cursor:pointer">Review payment</button>
+          </div>
+        </sc-if>
+
+        <!-- ======== REVIEW ======== -->
+        <sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Review" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 26px;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 22px">
+              <button onClick="{{ goAmount }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Review</span>
+              <span style="margin-left:auto;font-size:12px;font-weight:700;color:#9AA09A">Step 3 of 3</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:22px">
+              <span style="width:64px;height:64px;border-radius:22px;background:{{ recTint }};display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:800;color:{{ recTintFg }}">{{ recInitials }}</span>
+              <span style="font-size:14px;font-weight:600;color:#6B726C">You're sending to {{ recName }}</span>
+              <span style="font-size:44px;font-weight:800;letter-spacing:-.045em;color:#0B0C0B;font-variant-numeric:tabular-nums">{{ amountFormatted }}</span>
+            </div>
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:6px 16px">
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">From</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Main · USD ····4429</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">To</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">{{ recHandle }}</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Arrives</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Instantly</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Fee</span>
+                <span style="font-size:13.5px;font-weight:700;color:#2E7D46">No fee</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Reference</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Design retainer</span>
+              </div>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:11px;align-items:flex-start;padding:15px;border-radius:18px;background:#EDEFEA">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3F453F" stroke-width="1.8" stroke-linecap="round" style="flex:none;margin-top:1px"><rect x="4.5" y="10" width="15" height="10" rx="3"></rect><path d="M8.5 10V7.5a3.5 3.5 0 017 0V10"></path></svg>
+              <p style="margin:0;font-size:12.5px;line-height:1.5;font-weight:600;color:#3F453F">Once confirmed this payment can't be reversed. Check the recipient's details.</p>
+            </div>
+            <div style="margin-top:auto;padding-top:20px;display:flex;flex-direction:column;gap:10px">
+              <button onClick="{{ confirmPay }}" style="height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15.5px;font-weight:700;color:#14301A;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="background:#96E44F">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="2" stroke-linecap="round"><path d="M12 3l7.5 3.4v5.1c0 4.4-3 8-7.5 9.5-4.5-1.5-7.5-5.1-7.5-9.5V6.4L12 3z"></path></svg>
+                Confirm with Face ID
+              </button>
+              <button onClick="{{ failPay }}" style="height:48px;border:none;background:none;font-family:Manrope;font-size:13.5px;font-weight:600;color:#9AA09A;cursor:pointer">Preview the failed state</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== PROCESSING ======== -->
+        <sc-if value="{{ isProcessing }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Processing" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:0 44px 60px">
+            <div style="width:74px;height:74px;border-radius:26px;background:#DCF5B8;display:flex;align-items:center;justify-content:center;animation:fpulse 1.2s ease-in-out infinite">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="2" stroke-linecap="round"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
+            </div>
+            <div style="text-align:center;display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:20px;font-weight:800;letter-spacing:-.03em;color:#0B0C0B">Sending {{ amountFormatted }}</span>
+              <span style="font-size:13.5px;font-weight:500;color:#6B726C">Confirming with the receiving bank…</span>
+            </div>
+            <div style="width:150px;height:3px;border-radius:2px;background:#E0E3DD;overflow:hidden;position:relative">
+              <span style="position:absolute;inset:0;width:55%;border-radius:2px;background:#A9EE68;animation:fdash 1.1s ease-in-out infinite"></span>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== SUCCESS ======== -->
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Success" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;padding:24px 24px 28px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center">
+              <div style="width:96px;height:96px;border-radius:34px;background:#A9EE68;display:flex;align-items:center;justify-content:center;animation:fpop .45s cubic-bezier(.2,.9,.3,1) both">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.6 4.6L19 7.6"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px;animation:fup .4s .1s ease both">
+                <span style="font-size:26px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Payment sent</span>
+                <span style="font-size:15px;font-weight:500;line-height:1.5;color:#6B726C">{{ amountFormatted }} is on its way to {{ recName }}. It usually lands within seconds.</span>
+              </div>
+              <div style="margin-top:6px;padding:9px 14px;border-radius:12px;background:#fff;border:1px solid #E4E7E1;font-size:12.5px;font-weight:700;color:#3F453F;font-variant-numeric:tabular-nums">Ref FT-8842-0193</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button onClick="{{ goHome }}" style="height:56px;border:none;border-radius:16px;background:#14301A;font-family:Manrope;font-size:15.5px;font-weight:700;color:#fff;cursor:pointer" style-hover="background:#1B4325">Back to home</button>
+              <button onClick="{{ goActivity }}" style="height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:600;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">View in activity</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== FAILED ======== -->
+        <sc-if value="{{ isFailed }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Payment failed" style="flex:1;background:#F6F7F4;display:flex;flex-direction:column;padding:24px 24px 28px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center">
+              <div style="width:96px;height:96px;border-radius:34px;background:#FDECEA;display:flex;align-items:center;justify-content:center;animation:fpop .45s cubic-bezier(.2,.9,.3,1) both">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C93A2E" stroke-width="2.3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <span style="font-size:26px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Payment didn't go through</span>
+                <span style="font-size:15px;font-weight:500;line-height:1.5;color:#6B726C">The receiving bank declined the transfer. Nothing has left your account.</span>
+              </div>
+              <div style="margin-top:4px;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid #E4E7E1;display:flex;flex-direction:column;gap:5px;text-align:left;width:100%">
+                <span style="font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9AA09A">What to do</span>
+                <span style="font-size:13px;font-weight:600;line-height:1.5;color:#3F453F">Check {{ recName }}'s account details, or try again in a few minutes.</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button onClick="{{ goReview }}" style="height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:15.5px;font-weight:700;color:#14301A;cursor:pointer" style-hover="background:#96E44F">Try again</button>
+              <button onClick="{{ goHome }}" style="height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:600;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">Back to home</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== ACTIVITY ======== -->
+        <sc-if value="{{ isActivity }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Activity" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 108px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0 16px">
+              <h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-.04em;color:#0B0C0B">Activity</h1>
+              <button onClick="{{ toggleEmpty }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"></path></svg>
+              </button>
+            </div>
+            <div style="height:50px;border-radius:16px;background:#fff;border:1px solid #E4E7E1;display:flex;align-items:center;gap:10px;padding:0 15px;margin-bottom:13px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA09A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.4"></circle><path d="M16 16l4 4"></path></svg>
+              <input value="{{ txQuery }}" onChange="{{ setTxQuery }}" placeholder="Search transactions" style="flex:1;border:none;outline:none;background:none;font-family:Manrope;font-size:14.5px;font-weight:600;color:#0B0C0B">
+            </div>
+            <div style="display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px" class="fscroll">
+              <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+                <button onClick="{{ f.pick }}" style="flex:none;height:36px;padding:0 15px;border-radius:12px;border:1px solid {{ f.border }};background:{{ f.bg }};font-family:Manrope;font-size:13px;font-weight:700;color:{{ f.fg }};cursor:pointer">{{ f.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ activityEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:0 26px">
+                <div style="width:78px;height:78px;border-radius:26px;background:#EDEFEA;display:flex;align-items:center;justify-content:center">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B4BAB2" stroke-width="1.7" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="3.4"></rect><path d="M8 10h8M8 14h5"></path></svg>
+                </div>
+                <span style="font-size:18px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Nothing here yet</span>
+                <span style="font-size:13.5px;font-weight:500;line-height:1.55;color:#6B726C">Payments in this filter will show up here as soon as they happen.</span>
+                <button onClick="{{ toggleEmpty }}" style="margin-top:6px;height:46px;padding:0 22px;border:none;border-radius:14px;background:#A9EE68;font-family:Manrope;font-size:14px;font-weight:700;color:#14301A;cursor:pointer">Show all activity</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ activityFilled }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:18px">
+                <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2">
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;padding:0 4px">
+                      <span style="font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9AA09A">{{ g.label }}</span>
+                      <span style="font-size:12px;font-weight:700;color:#B4BAB2;font-variant-numeric:tabular-nums">{{ g.total }}</span>
+                    </div>
+                    <sc-for list="{{ g.items }}" as="tx" hint-placeholder-count="3">
+                      <button onClick="{{ tx.open }}" style="border:1px solid #E4E7E1;border-radius:18px;background:#fff;padding:14px;display:flex;align-items:center;gap:13px;cursor:pointer;font-family:Manrope;text-align:left;width:100%" style-hover="border-color:#C9CFC5">
+                        <span style="width:42px;height:42px;flex:none;border-radius:14px;background:{{ tx.tint }};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:{{ tx.tintFg }}">{{ tx.initial }}</span>
+                        <span style="flex:1;display:flex;flex-direction:column;gap:3px;min-width:0">
+                          <span style="font-size:14.5px;font-weight:700;letter-spacing:-.015em;color:#0B0C0B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ tx.merchant }}</span>
+                          <span style="font-size:12px;font-weight:600;color:#9AA09A">{{ tx.meta }}</span>
+                        </span>
+                        <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                          <span style="font-size:15px;font-weight:700;color:{{ tx.amountColor }};font-variant-numeric:tabular-nums">{{ tx.amount }}</span>
+                          <sc-if value="{{ tx.showStatus }}" hint-placeholder-val="{{ false }}">
+                            <span style="padding:3px 8px;border-radius:7px;background:{{ tx.statusBg }};font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:{{ tx.statusFg }}">{{ tx.status }}</span>
+                          </sc-if>
+                        </span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ======== TRANSACTION DETAIL ======== -->
+        <sc-if value="{{ isTxn }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Transaction detail" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 30px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 22px">
+              <button onClick="{{ goActivity }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Transaction</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:64px;height:64px;border-radius:22px;background:{{ txTint }};display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:800;color:{{ txTintFg }}">{{ txInitial }}</span>
+              <span style="font-size:16px;font-weight:700;color:#0B0C0B">{{ txMerchant }}</span>
+              <span style="font-size:40px;font-weight:800;letter-spacing:-.045em;color:{{ txAmountColor }};font-variant-numeric:tabular-nums">{{ txAmount }}</span>
+              <span style="padding:6px 12px;border-radius:10px;background:{{ txStatusBg }};font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:{{ txStatusFg }}">{{ txStatus }}</span>
+            </div>
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:6px 16px;margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Date</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">{{ txDate }}</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Category</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">{{ txCategory }}</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Account</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Main · USD ····4429</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #F0F2EE">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Reference</span>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B;font-variant-numeric:tabular-nums">{{ txRef }}</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:14px 0">
+                <span style="font-size:13.5px;font-weight:600;color:#9AA09A">Fee</span>
+                <span style="font-size:13.5px;font-weight:700;color:#2E7D46">No fee</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+              <button style="height:52px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:14px;font-weight:700;color:#0B0C0B;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:#F1F3EE">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><path d="M12 15V4"></path><path d="M7.5 10.5L12 15l4.5-4.5"></path><path d="M5 19h14"></path></svg>Receipt
+              </button>
+              <button style="height:52px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:14px;font-weight:700;color:#0B0C0B;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:#F1F3EE">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><path d="M12 4v11"></path><path d="M7.5 8.5L12 4l4.5 4.5"></path><path d="M5 19h14"></path></svg>Share
+              </button>
+            </div>
+            <button onClick="{{ goSupport }}" style="width:100%;height:52px;border:none;border-radius:16px;background:#EDEFEA;font-family:Manrope;font-size:14px;font-weight:700;color:#3F453F;cursor:pointer" style-hover="background:#E4E7E1">Something wrong? Get help</button>
+          </div>
+        </sc-if>
+
+        <!-- ======== CARDS ======== -->
+        <sc-if value="{{ isCards }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Cards" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 108px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0 18px">
+              <h1 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-.04em;color:#0B0C0B">Cards</h1>
+              <button style="height:40px;padding:0 15px;border-radius:13px;border:1px solid #E4E7E1;background:#fff;font-family:Manrope;font-size:13px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="border-color:#0B0C0B">+ New virtual</button>
+            </div>
+
+            <div style="border-radius:26px;background:{{ cardBg }};padding:22px;height:214px;display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 22px 40px -24px rgba(11,12,11,.5)">
+              <div style="position:absolute;right:-50px;bottom:-60px;width:200px;height:200px;border-radius:50%;background:rgba(169,238,104,.12)"></div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;position:relative">
+                <svg width="26" height="26" viewBox="0 0 22 22"><circle cx="6" cy="6" r="3.7" fill="#A9EE68"></circle><circle cx="16" cy="6" r="3.7" fill="#A9EE68"></circle><circle cx="6" cy="16" r="3.7" fill="#A9EE68"></circle><circle cx="16" cy="16" r="3.7" fill="#A9EE68"></circle></svg>
+                <span style="padding:5px 11px;border-radius:9px;background:rgba(255,255,255,.14);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff">{{ cardState }}</span>
+              </div>
+              <div style="margin-top:auto;display:flex;flex-direction:column;gap:14px;position:relative">
+                <span style="font-size:19px;font-weight:700;letter-spacing:.14em;color:#fff;font-variant-numeric:tabular-nums">{{ cardNumber }}</span>
+                <div style="display:flex;align-items:flex-end;justify-content:space-between">
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <span style="font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)">Card holder</span>
+                    <span style="font-size:13.5px;font-weight:700;color:#fff">SOFIA MARENGO</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <span style="font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)">Expires</span>
+                    <span style="font-size:13.5px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums">09/28</span>
+                  </div>
+                  <span style="font-size:13px;font-weight:800;letter-spacing:.02em;color:rgba(255,255,255,.9)">VISA</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:6px;justify-content:center;margin:14px 0 18px">
+              <span style="width:22px;height:5px;border-radius:3px;background:#0B0C0B"></span>
+              <span style="width:5px;height:5px;border-radius:3px;background:#D3D8CF"></span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+              <button onClick="{{ toggleFreeze }}" style="height:92px;border:1px solid {{ freezeBorder }};border-radius:20px;background:{{ freezeBg }};display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:15px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#0B0C0B">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ freezeFg }}" stroke-width="1.9" stroke-linecap="round"><path d="M12 3v18M4 7.5l16 9M20 7.5l-16 9"></path></svg>
+                <span style="font-size:13.5px;font-weight:700;color:{{ freezeFg }}">{{ freezeLabel }}</span>
+              </button>
+              <button onClick="{{ goCardControls }}" style="height:92px;border:1px solid #E4E7E1;border-radius:20px;background:#fff;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:15px;cursor:pointer;font-family:Manrope;text-align:left" style-hover="border-color:#0B0C0B">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 4v3M12 17v3M4 12h3M17 12h3"></path></svg>
+                <span style="font-size:13.5px;font-weight:700;color:#0B0C0B">Card controls</span>
+              </button>
+            </div>
+
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:4px 16px;margin-bottom:12px">
+              <button onClick="{{ goCardControls }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:15px 0;border:none;border-bottom:1px solid #F0F2EE;background:none;cursor:pointer;font-family:Manrope;text-align:left">
+                <span style="flex:1;font-size:14.5px;font-weight:700;color:#0B0C0B">Spending limits</span>
+                <span style="font-size:13px;font-weight:700;color:#9AA09A">$2,000 / mo</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+              <button onClick="{{ showPin }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:15px 0;border:none;border-bottom:1px solid #F0F2EE;background:none;cursor:pointer;font-family:Manrope;text-align:left">
+                <span style="flex:1;font-size:14.5px;font-weight:700;color:#0B0C0B">Change PIN</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+              <button style="width:100%;display:flex;align-items:center;gap:12px;padding:15px 0;border:none;background:none;cursor:pointer;font-family:Manrope;text-align:left">
+                <span style="flex:1;font-size:14.5px;font-weight:700;color:#0B0C0B">View card details</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </div>
+
+            <button style="width:100%;height:56px;border:none;border-radius:16px;background:#0B0C0B;font-family:Manrope;font-size:14.5px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px" style-hover="background:#262926">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21c-1.6 0-3-1.1-4.2-3.3C6.6 15.5 6 13.2 6 10.8 6 8 7.6 6 10 6c1 0 1.7.4 2 .6.3.2.4.2.6 0 .3-.2 1-.6 2-.6 2 0 3.4 1.4 3.8 3.4-1.6.7-2.4 2-2.4 3.6 0 1.8 1 3 2.6 3.6-.7 2-2.2 3.4-3.6 3.4-.9 0-1.5-.4-2-.6-.3-.2-.5-.1-.7 0-.3.2-.9.6-1.8.6z" fill="#fff"></path><path d="M14.5 2.2c.2 1.4-.8 3.1-2.4 3.3-.2-1.3.8-2.9 2.4-3.3z" fill="#fff"></path></svg>
+              Add to Apple Wallet
+            </button>
+          </div>
+        </sc-if>
+
+        <!-- ======== CARD CONTROLS ======== -->
+        <sc-if value="{{ isCardControls }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Card controls" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 30px">
+            <div style="display:flex;align-items:center;gap:12px;padding:6px 0 20px">
+              <button onClick="{{ goCards }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <span style="font-size:16.5px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Card controls</span>
+            </div>
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:20px;margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
+                <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">Monthly spending limit</span>
+                <span style="font-size:15px;font-weight:800;color:#0B0C0B;font-variant-numeric:tabular-nums">{{ limitLabel }}</span>
+              </div>
+              <div style="height:8px;border-radius:5px;background:#EDEFEA;overflow:hidden;margin-bottom:8px">
+                <span style="display:block;height:100%;width:{{ limitPct }};border-radius:5px;background:#A9EE68"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:14px">
+                <span style="font-size:12px;font-weight:600;color:#9AA09A">$1,284 spent</span>
+                <span style="font-size:12px;font-weight:600;color:#9AA09A">of {{ limitLabel }}</span>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button onClick="{{ limitDown }}" style="flex:1;height:46px;border:1px solid #DDE1D9;border-radius:14px;background:#fff;font-family:Manrope;font-size:18px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">−</button>
+                <button onClick="{{ limitUp }}" style="flex:1;height:46px;border:1px solid #DDE1D9;border-radius:14px;background:#fff;font-family:Manrope;font-size:18px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">+</button>
+              </div>
+            </div>
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:4px 18px;margin-bottom:12px">
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #F0F2EE">
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">Freeze card</span>
+                  <span style="font-size:12px;font-weight:500;color:#9AA09A">Blocks new payments instantly</span>
+                </span>
+                <button onClick="{{ toggleFreeze }}" style="width:52px;height:31px;border-radius:999px;border:none;background:{{ swFreeze }};position:relative;cursor:pointer;transition:.2s">
+                  <span style="position:absolute;top:3px;left:{{ swFreezeX }};width:25px;height:25px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+                </button>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #F0F2EE">
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">Online payments</span>
+                  <span style="font-size:12px;font-weight:500;color:#9AA09A">E-commerce and subscriptions</span>
+                </span>
+                <button onClick="{{ toggleOnline }}" style="width:52px;height:31px;border-radius:999px;border:none;background:{{ swOnline }};position:relative;cursor:pointer;transition:.2s">
+                  <span style="position:absolute;top:3px;left:{{ swOnlineX }};width:25px;height:25px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+                </button>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0">
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">Withdrawals abroad</span>
+                  <span style="font-size:12px;font-weight:500;color:#9AA09A">ATMs outside your country</span>
+                </span>
+                <button onClick="{{ toggleAbroad }}" style="width:52px;height:31px;border-radius:999px;border:none;background:{{ swAbroad }};position:relative;cursor:pointer;transition:.2s">
+                  <span style="position:absolute;top:3px;left:{{ swAbroadX }};width:25px;height:25px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+                </button>
+              </div>
+            </div>
+            <button onClick="{{ showPin }}" style="width:100%;height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:700;color:#0B0C0B;cursor:pointer;margin-bottom:10px" style-hover="background:#F1F3EE">Change PIN</button>
+            <button onClick="{{ showTerminate }}" style="width:100%;height:56px;border:none;border-radius:16px;background:#FDECEA;font-family:Manrope;font-size:15px;font-weight:700;color:#C93A2E;cursor:pointer" style-hover="background:#FBE0DC">Terminate card</button>
+          </div>
+        </sc-if>
+
+        <!-- ======== WALLET ======== -->
+        <sc-if value="{{ isWallet }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Wallet" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 108px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0 18px">
+              <button onClick="{{ goHome }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Accounts</h1>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
+              <sc-for list="{{ accounts }}" as="a" hint-placeholder-count="3">
+                <div style="border:1px solid #E4E7E1;border-radius:20px;background:#fff;padding:16px;display:flex;align-items:center;gap:13px">
+                  <span style="width:44px;height:44px;flex:none;border-radius:15px;background:#F1F3EE;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#0B0C0B">{{ a.symbol }}</span>
+                  <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                    <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">{{ a.name }}</span>
+                    <span style="font-size:12px;font-weight:600;color:#9AA09A">{{ a.iban }}</span>
+                  </span>
+                  <span style="font-size:16px;font-weight:800;color:#0B0C0B;font-variant-numeric:tabular-nums">{{ a.balance }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">
+              <button style="height:56px;border:none;border-radius:16px;background:#A9EE68;font-family:Manrope;font-size:14.5px;font-weight:700;color:#14301A;cursor:pointer" style-hover="background:#96E44F">Add money</button>
+              <button onClick="{{ goSend }}" style="height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:14.5px;font-weight:700;color:#0B0C0B;cursor:pointer" style-hover="background:#F1F3EE">Transfer</button>
+            </div>
+            <div style="border-radius:22px;background:#DCF5B8;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#3F6B2E">Multi-currency</span>
+              <span style="font-size:14px;font-weight:600;line-height:1.5;color:#14301A">Hold and convert 14 currencies at the real exchange rate. Open a EUR balance in one tap.</span>
+              <button style="align-self:flex-start;margin-top:4px;height:42px;padding:0 16px;border:none;border-radius:13px;background:#14301A;font-family:Manrope;font-size:13px;font-weight:700;color:#fff;cursor:pointer">Open a balance</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== NOTIFICATIONS ======== -->
+        <sc-if value="{{ isNotifs }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Notifications" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 30px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0 18px">
+              <button onClick="{{ goHome }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Notifications</h1>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ notifications }}" as="n" hint-placeholder-count="4">
+                <div style="border:1px solid {{ n.border }};border-radius:20px;background:#fff;padding:16px;display:flex;gap:13px">
+                  <span style="width:40px;height:40px;flex:none;border-radius:13px;background:{{ n.tint }};display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:{{ n.tintFg }}">{{ n.glyph }}</span>
+                  <span style="flex:1;display:flex;flex-direction:column;gap:5px">
+                    <span style="display:flex;align-items:baseline;gap:8px">
+                      <span style="flex:1;font-size:14px;font-weight:700;letter-spacing:-.015em;color:#0B0C0B">{{ n.title }}</span>
+                      <span style="font-size:11.5px;font-weight:600;color:#B4BAB2">{{ n.time }}</span>
+                    </span>
+                    <span style="font-size:12.5px;font-weight:500;line-height:1.5;color:#6B726C">{{ n.body }}</span>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== PROFILE ======== -->
+        <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Profile" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 108px">
+            <h1 style="margin:14px 0 20px;font-size:28px;font-weight:800;letter-spacing:-.04em;color:#0B0C0B">Profile</h1>
+            <div style="border-radius:24px;background:#fff;border:1px solid #E4E7E1;padding:20px;display:flex;align-items:center;gap:14px;margin-bottom:14px">
+              <span style="width:58px;height:58px;border-radius:20px;background:#14301A;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:#A9EE68">SM</span>
+              <span style="flex:1;display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:17px;font-weight:800;letter-spacing:-.025em;color:#0B0C0B">Sofia Marengo</span>
+                <span style="font-size:13px;font-weight:600;color:#9AA09A">@sofia · Verified</span>
+              </span>
+              <span style="width:34px;height:34px;border-radius:11px;background:#DCF5B8;display:flex;align-items:center;justify-content:center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14301A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6l4.6 4.6L19 7.6"></path></svg>
+              </span>
+            </div>
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:4px 16px;margin-bottom:12px">
+              <sc-for list="{{ profileRows }}" as="r" hint-placeholder-count="5">
+                <button onClick="{{ r.go }}" style="width:100%;display:flex;align-items:center;gap:13px;padding:15px 0;border:none;border-bottom:1px solid #F0F2EE;background:none;cursor:pointer;font-family:Manrope;text-align:left">
+                  <span style="width:34px;height:34px;flex:none;border-radius:11px;background:#F1F3EE;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#0B0C0B">{{ r.glyph }}</span>
+                  <span style="flex:1;display:flex;flex-direction:column;gap:2px">
+                    <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">{{ r.label }}</span>
+                    <span style="font-size:11.5px;font-weight:500;color:#9AA09A">{{ r.hint }}</span>
+                  </span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+                </button>
+              </sc-for>
+            </div>
+            <button onClick="{{ showLogout }}" style="width:100%;height:56px;border:1px solid #DDE1D9;border-radius:16px;background:#fff;font-family:Manrope;font-size:15px;font-weight:700;color:#C93A2E;cursor:pointer" style-hover="background:#FDECEA;border-color:#F3CFC9">Log out</button>
+            <p style="margin:18px 0 0;text-align:center;font-size:11.5px;font-weight:600;color:#B4BAB2">Finto v3.1.0 · Deposits protected up to $250,000</p>
+          </div>
+        </sc-if>
+
+        <!-- ======== SECURITY ======== -->
+        <sc-if value="{{ isSecurity }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Security" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 30px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0 18px">
+              <button onClick="{{ goProfile }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Security</h1>
+            </div>
+            <div style="border-radius:22px;background:#14301A;padding:18px;display:flex;gap:13px;align-items:center;margin-bottom:14px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A9EE68" stroke-width="1.8" stroke-linecap="round" style="flex:none"><path d="M12 3l7.5 3.4v5.1c0 4.4-3 8-7.5 9.5-4.5-1.5-7.5-5.1-7.5-9.5V6.4L12 3z"></path><path d="M9 12l2.2 2.2L15 10.4"></path></svg>
+              <span style="display:flex;flex-direction:column;gap:4px">
+                <span style="font-size:14.5px;font-weight:700;color:#fff">Your account is well protected</span>
+                <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,.6)">Face ID, device binding and 2FA are on.</span>
+              </span>
+            </div>
+            <div style="border-radius:22px;background:#fff;border:1px solid #E4E7E1;padding:4px 18px;margin-bottom:12px">
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #F0F2EE">
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">Face ID login</span>
+                  <span style="font-size:12px;font-weight:500;color:#9AA09A">Open the app without a password</span>
+                </span>
+                <button onClick="{{ toggleFaceId }}" style="width:52px;height:31px;border-radius:999px;border:none;background:{{ swFace }};position:relative;cursor:pointer;transition:.2s">
+                  <span style="position:absolute;top:3px;left:{{ swFaceX }};width:25px;height:25px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+                </button>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid #F0F2EE">
+                <span style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <span style="font-size:14.5px;font-weight:700;color:#0B0C0B">Confirm every payment</span>
+                  <span style="font-size:12px;font-weight:500;color:#9AA09A">Biometric check before money leaves</span>
+                </span>
+                <button onClick="{{ toggleConfirm }}" style="width:52px;height:31px;border-radius:999px;border:none;background:{{ swConfirm }};position:relative;cursor:pointer;transition:.2s">
+                  <span style="position:absolute;top:3px;left:{{ swConfirmX }};width:25px;height:25px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+                </button>
+              </div>
+              <button style="width:100%;display:flex;align-items:center;gap:12px;padding:16px 0;border:none;border-bottom:1px solid #F0F2EE;background:none;cursor:pointer;font-family:Manrope;text-align:left">
+                <span style="flex:1;font-size:14.5px;font-weight:700;color:#0B0C0B">Change password</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+              <button style="width:100%;display:flex;align-items:center;gap:12px;padding:16px 0;border:none;background:none;cursor:pointer;font-family:Manrope;text-align:left">
+                <span style="flex:1;font-size:14.5px;font-weight:700;color:#0B0C0B">Trusted devices</span>
+                <span style="font-size:13px;font-weight:700;color:#9AA09A">2</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4CABF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== SUPPORT / LOADING SKELETON ======== -->
+        <sc-if value="{{ isSupport }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Loading" class="fscroll" style="flex:1;background:#F6F7F4;padding:6px 20px 30px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0 20px">
+              <button onClick="{{ goProfile }}" style="width:42px;height:42px;border-radius:14px;border:1px solid #E4E7E1;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0B0C0B">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0C0B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <h1 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.035em;color:#0B0C0B">Help</h1>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div style="border:1px solid #E4E7E1;border-radius:20px;background:#fff;padding:16px;display:flex;gap:13px;align-items:center;animation:fpulse 1.4s ease-in-out infinite">
+                <span style="width:42px;height:42px;border-radius:14px;background:#EDEFEA"></span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:8px"><span style="width:65%;height:11px;border-radius:6px;background:#EDEFEA"></span><span style="width:40%;height:9px;border-radius:5px;background:#F1F3EE"></span></span>
+              </div>
+              <div style="border:1px solid #E4E7E1;border-radius:20px;background:#fff;padding:16px;display:flex;gap:13px;align-items:center;animation:fpulse 1.4s .15s ease-in-out infinite">
+                <span style="width:42px;height:42px;border-radius:14px;background:#EDEFEA"></span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:8px"><span style="width:50%;height:11px;border-radius:6px;background:#EDEFEA"></span><span style="width:70%;height:9px;border-radius:5px;background:#F1F3EE"></span></span>
+              </div>
+              <div style="border:1px solid #E4E7E1;border-radius:20px;background:#fff;padding:16px;display:flex;gap:13px;align-items:center;animation:fpulse 1.4s .3s ease-in-out infinite">
+                <span style="width:42px;height:42px;border-radius:14px;background:#EDEFEA"></span>
+                <span style="flex:1;display:flex;flex-direction:column;gap:8px"><span style="width:58%;height:11px;border-radius:6px;background:#EDEFEA"></span><span style="width:34%;height:9px;border-radius:5px;background:#F1F3EE"></span></span>
+              </div>
+            </div>
+            <p style="margin:22px 0 0;text-align:center;font-size:13px;font-weight:600;color:#9AA09A">Loading your support history…</p>
+          </div>
+        </sc-if>
+
+        <!-- ======== BOTTOM SHEET / MODAL ======== -->
+        <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;z-index:20;background:rgba(11,12,11,.44);display:flex;align-items:flex-end">
+            <div style="width:100%;border-radius:30px 30px 46px 46px;background:#fff;padding:26px 24px 30px;display:flex;flex-direction:column;gap:8px;animation:fup .28s cubic-bezier(.2,.9,.3,1) both">
+              <span style="align-self:center;width:44px;height:4px;border-radius:3px;background:#E0E3DD;margin-bottom:14px"></span>
+              <span style="width:52px;height:52px;border-radius:18px;background:{{ sheetTint }};display:flex;align-items:center;justify-content:center;margin-bottom:6px;font-size:19px;font-weight:800;color:{{ sheetTintFg }}">{{ sheetGlyph }}</span>
+              <span style="font-size:21px;font-weight:800;letter-spacing:-.03em;color:#0B0C0B">{{ sheetTitle }}</span>
+              <span style="font-size:14px;font-weight:500;line-height:1.55;color:#6B726C">{{ sheetBody }}</span>
+              <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+                <button onClick="{{ sheetConfirm }}" style="height:54px;border:none;border-radius:16px;background:{{ sheetCtaBg }};font-family:Manrope;font-size:15px;font-weight:700;color:{{ sheetCtaFg }};cursor:pointer">{{ sheetCta }}</button>
+                <button onClick="{{ closeSheet }}" style="height:54px;border:none;border-radius:16px;background:#F1F3EE;font-family:Manrope;font-size:15px;font-weight:600;color:#3F453F;cursor:pointer">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== BOTTOM NAV ======== -->
+        <sc-if value="{{ showNav }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:0;right:0;bottom:0;z-index:10;padding:10px 14px 14px;background:linear-gradient(to top,rgba(246,247,244,1) 55%,rgba(246,247,244,0))">
+            <div style="height:70px;border-radius:26px;background:#fff;border:1px solid #E4E7E1;box-shadow:0 12px 28px -14px rgba(11,12,11,.18);display:flex;align-items:center;padding:0 6px">
+              <button onClick="{{ goHome }}" style="flex:1;height:100%;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;font-family:Manrope">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ navHome }}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9.6l8-5.6 8 5.6V20"></path><path d="M9.6 20v-5.4h4.8V20"></path></svg>
+                <span style="font-size:10.5px;font-weight:700;color:{{ navHome }}">Home</span>
+              </button>
+              <button onClick="{{ goPay }}" style="flex:1;height:100%;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;font-family:Manrope">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ navPay }}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
+                <span style="font-size:10.5px;font-weight:700;color:{{ navPay }}">Pay</span>
+              </button>
+              <button onClick="{{ goActivity }}" style="flex:1;height:100%;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;font-family:Manrope">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ navAct }}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15l4.5-5 3.5 3.4L20 6"></path><path d="M4 20h16"></path></svg>
+                <span style="font-size:10.5px;font-weight:700;color:{{ navAct }}">Activity</span>
+              </button>
+              <button onClick="{{ goCards }}" style="flex:1;height:100%;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;font-family:Manrope">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ navCards }}" stroke-width="1.9" stroke-linecap="round"><rect x="3" y="5.5" width="18" height="13" rx="3.4"></rect><path d="M3 10h18"></path></svg>
+                <span style="font-size:10.5px;font-weight:700;color:{{ navCards }}">Cards</span>
+              </button>
+              <button onClick="{{ goProfile }}" style="flex:1;height:100%;border:none;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;font-family:Manrope">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="{{ navProfile }}" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8.6" r="3.6"></circle><path d="M5.5 19.5c1-3.2 3.5-4.8 6.5-4.8s5.5 1.6 6.5 4.8"></path></svg>
+                <span style="font-size:10.5px;font-weight:700;color:{{ navProfile }}">Profile</span>
+              </button>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(11,12,11,.22);z-index:30;pointer-events:none"></div>
+      </div>
+    </div>
+
+    <!-- ============ SCREEN RAIL ============ -->
+    <div style="width:290px;flex:none;display:flex;flex-direction:column;gap:22px;padding-top:6px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#9AA09A">The journey</span>
+        <p style="margin:0;font-size:13px;line-height:1.6;font-weight:500;color:#6B726C">Splash → onboarding → login → home → send money → review → success → activity → detail. Every button in that chain is live.</p>
+      </div>
+      <sc-for list="{{ railGroups }}" as="grp" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <span style="font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#B4BAB2">{{ grp.label }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="4">
+              <button onClick="{{ it.go }}" style="height:34px;padding:0 12px;border-radius:11px;border:1px solid {{ it.border }};background:{{ it.bg }};font-family:Manrope;font-size:12.5px;font-weight:700;color:{{ it.fg }};cursor:pointer;transition:.15s">{{ it.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <div style="padding-top:6px;display:flex;flex-direction:column;gap:9px">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#B4BAB2">System notes</span>
+        <p style="margin:0;font-size:12.5px;line-height:1.65;font-weight:500;color:#6B726C">8pt spacing · 16/18/20/26px radii · Manrope 500–800 · lime for primary action, forest for balance surfaces, magenta-free. Amounts are tabular; income green, spend ink.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;userName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Sofia&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+const TINTS = {
+  lime: ['#DCF5B8', '#2F5B1E'],
+  forest: ['#14301A', '#A9EE68'],
+  stone: ['#EDEFEA', '#3F453F'],
+  sand: ['#F0EBDF', '#6B5A34'],
+  sky: ['#E4EEF3', '#25596E']
+};
+
+const TX = [
+  { id: 't1', merchant: 'Spotify Premium', cat: 'Subscription', amt: -12.99, day: 'Today', time: '09:12', status: 'Completed', tint: 'lime', ref: 'FT-8841-7712' },
+  { id: 't2', merchant: 'Alessia Moretti', cat: 'Transfer out', amt: -240.00, day: 'Today', time: '08:40', status: 'Completed', tint: 'stone', ref: 'FT-8841-6620' },
+  { id: 't3', merchant: 'Stripe Payout', cat: 'Income', amt: 1820.00, day: 'Today', time: '07:02', status: 'Completed', tint: 'forest', ref: 'FT-8841-5108' },
+  { id: 't4', merchant: 'Apple Store', cat: 'Shopping', amt: -1099.00, day: 'Yesterday', time: '18:24', status: 'Pending', tint: 'stone', ref: 'FT-8840-9931' },
+  { id: 't5', merchant: 'Whole Foods Market', cat: 'Groceries', amt: -86.42, day: 'Yesterday', time: '13:15', status: 'Completed', tint: 'lime', ref: 'FT-8840-8842' },
+  { id: 't6', merchant: 'Northwind Studio', cat: 'Invoice paid', amt: 540.00, day: 'Yesterday', time: '10:06', status: 'Completed', tint: 'sand', ref: 'FT-8840-7715' },
+  { id: 't7', merchant: 'Figma', cat: 'Software', amt: -45.00, day: 'Mar 09', time: '11:48', status: 'Failed', tint: 'sky', ref: 'FT-8838-2204' },
+  { id: 't8', merchant: 'Uber', cat: 'Transport', amt: -18.75, day: 'Mar 09', time: '08:31', status: 'Completed', tint: 'stone', ref: 'FT-8838-1190' }
+];
+
+const PEOPLE = [
+  { id: 'p1', name: 'Alessia Moretti', handle: '@alessia', tint: 'lime' },
+  { id: 'p2', name: 'Marcus Lee', handle: '@mlee', tint: 'stone' },
+  { id: 'p3', name: 'Northwind Studio', handle: 'northwind.co', tint: 'sand' },
+  { id: 'p4', name: 'Priya Raman', handle: '@priya', tint: 'sky' },
+  { id: 'p5', name: 'Tomás Ruiz', handle: '@truiz', tint: 'forest' }
+];
+
+const OB = [
+  { title: 'Payments that keep up with your business', body: 'Send, receive and settle in one place — the same Finto rails your customers already checkout on.', cta: 'Pay now', cardTitle: 'Alesana Corp', cardSub: 'finance@alesana.com', metaLabel: 'Invoice', metaValue: '$28,000.00' },
+  { title: 'One balance, fourteen currencies', body: 'Hold, convert and spend at the real rate. Your money moves at the speed of a message.', cta: 'Convert', cardTitle: 'Main · USD', cardSub: 'Available now', metaLabel: 'Balance', metaValue: '$2,450.80' },
+  { title: 'Every payment, fully in your control', body: 'Freeze a card, set a limit or check a receipt in two taps. Face ID guards the rest.', cta: 'Freeze card', cardTitle: 'Finto Visa', cardSub: 'Virtual · ····4429', metaLabel: 'Spent in March', metaValue: '$1,284.16' }
+];
+
+const fmt = (n) => '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+class Component extends DCLogic {
+  state = {
+    screen: 'splash', ob: 0, method: 'email', loginId: 'sofia@marengo.studio', pw: 'sofia2026',
+    pwShown: false, loginError: false, balanceHidden: false, amount: '240', recipient: PEOPLE[0],
+    query: '', txQuery: '', filter: 'All', selected: TX[1], frozen: false, online: true, abroad: false,
+    faceId: true, confirmPay: true, limit: 2000, sheet: null, emptyActivity: false,
+    scanMode: 'scan', reqTo: 'person'
+  };
+
+  qr = (() => {
+    let seed = 7;
+    const rnd = () => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    const N = 17;
+    const cells = [];
+    const finder = (r, c) => (r < 7 && c < 7) || (r < 7 && c > N - 8) || (r > N - 8 && c < 7);
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+      let on;
+      if (finder(r, c)) {
+        const rr = r < 7 ? r : N - 1 - r, cc = c < 7 ? c : N - 1 - c;
+        const ring = Math.max(Math.abs(rr - 3), Math.abs(cc - 3));
+        on = ring !== 2 && ring <= 3;
+      } else on = rnd() > 0.52;
+      cells.push({ fill: on ? '#0B0C0B' : '#fff' });
+    }
+    return cells;
+  })();
+
+  go = (screen) => () => this.setState({ screen, sheet: null });
+
+  renderVals() {
+    const s = this.state;
+    const scr = s.screen;
+    const tint = (k) => TINTS[k] || TINTS.stone;
+    const amtNum = parseFloat(s.amount || '0') || 0;
+    const over = amtNum > 2310.55;
+
+    const decorate = (t) => {
+      const [bg, fg] = tint(t.tint);
+      const income = t.amt > 0;
+      const statusStyle = t.status === 'Pending' ? ['#FBF0D9', '#8A6410'] : t.status === 'Failed' ? ['#FDECEA', '#C93A2E'] : ['#EDEFEA', '#6B726C'];
+      return {
+        ...t, initial: t.merchant.charAt(0), tint: bg, tintFg: fg,
+        meta: t.cat + ' · ' + t.day + ' ' + t.time,
+        amount: (income ? '+' : '−') + fmt(t.amt),
+        amountColor: income ? '#2E7D46' : '#0B0C0B',
+        showStatus: t.status !== 'Completed',
+        statusBg: statusStyle[0], statusFg: statusStyle[1],
+        open: () => this.setState({ selected: t, screen: 'txn' })
+      };
+    };
+
+    const q = s.txQuery.trim().toLowerCase();
+    let list = TX.filter((t) => !q || t.merchant.toLowerCase().includes(q));
+    if (s.filter === 'Income') list = list.filter((t) => t.amt > 0);
+    if (s.filter === 'Spending') list = list.filter((t) => t.amt < 0);
+    if (s.filter === 'Pending') list = list.filter((t) => t.status !== 'Completed');
+
+    const dayOrder = [];
+    list.forEach((t) => { if (!dayOrder.includes(t.day)) dayOrder.push(t.day); });
+    const groups = dayOrder.map((d) => {
+      const items = list.filter((t) => t.day === d);
+      const net = items.reduce((a, t) => a + t.amt, 0);
+      return { label: d, total: (net >= 0 ? '+' : '−') + fmt(net), items: items.map(decorate) };
+    });
+
+    const filters = ['All', 'Income', 'Spending', 'Pending'].map((f) => ({
+      label: f, pick: () => this.setState({ filter: f, emptyActivity: false }),
+      bg: s.filter === f ? '#0B0C0B' : '#fff',
+      fg: s.filter === f ? '#fff' : '#3F453F',
+      border: s.filter === f ? '#0B0C0B' : '#E4E7E1'
+    }));
+
+    const person = (p) => {
+      const [bg, fg] = tint(p.tint);
+      const parts = p.name.split(' ');
+      return {
+        ...p, tint: bg, tintFg: fg, first: parts[0],
+        initials: (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase(),
+        pick: () => this.setState({ recipient: p, screen: 'sendAmount' })
+      };
+    };
+    const pq = s.query.trim().toLowerCase();
+    const filtered = PEOPLE.filter((p) => !pq || p.name.toLowerCase().includes(pq) || p.handle.toLowerCase().includes(pq));
+
+    const rec = person(s.recipient);
+    const sel = decorate(s.selected);
+    const ob = OB[s.ob];
+
+    const railDef = [
+      ['Onboarding', [['Splash', 'splash'], ['Onboarding', 'ob'], ['Login', 'login']]],
+      ['Core', [['Home', 'home'], ['Pay', 'pay'], ['Activity', 'activity'], ['Cards', 'cards'], ['Profile', 'profile'], ['Accounts', 'wallet'], ['Notifications', 'notifs'], ['Security', 'security']]],
+      ['Send money flow', [['Recipient', 'sendPick'], ['Amount', 'sendAmount'], ['Review', 'review'], ['Processing', 'processing'], ['Success', 'success'], ['Failed', 'failed']]],
+      ['QR & requests', [['Scan', 'scan'], ['Scan result', 'scanFound'], ['Request', 'request'], ['Request sent', 'requestSent']]],
+      ['Cards flow', [['Card controls', 'cardControls'], ['Transaction', 'txn']]],
+      ['Other states', [['Loading', 'support'], ['Empty activity', 'emptyActivity'], ['Confirm modal', 'sheetDemo'], ['Login error', 'loginErr']]]
+    ];
+    const railGroups = railDef.map(([label, items]) => ({
+      label,
+      items: items.map(([lbl, key]) => {
+        const active = key === scr || (key === 'emptyActivity' && scr === 'activity' && s.emptyActivity);
+        let act;
+        if (key === 'emptyActivity') act = () => this.setState({ screen: 'activity', emptyActivity: true, sheet: null });
+        else if (key === 'sheetDemo') act = () => this.setState({ screen: 'cardControls', sheet: 'terminate' });
+        else if (key === 'loginErr') act = () => this.setState({ screen: 'login', loginError: true, sheet: null });
+        else act = () => this.setState({ screen: key, sheet: null, emptyActivity: false });
+        return {
+          label: lbl, go: act,
+          bg: active ? '#0B0C0B' : '#fff',
+          fg: active ? '#fff' : '#3F453F',
+          border: active ? '#0B0C0B' : '#DDE1D9'
+        };
+      })
+    }));
+
+    const sheets = {
+      logout: { glyph: '↪', tint: TINTS.stone[0], tintFg: TINTS.stone[1], title: 'Log out of Finto?', body: 'You will need your password or Face ID to get back in. Your data stays safe.', cta: 'Log out', ctaBg: '#0B0C0B', ctaFg: '#fff', confirm: () => this.setState({ screen: 'login', sheet: null }) },
+      terminate: { glyph: '!', tint: '#FDECEA', tintFg: '#C93A2E', title: 'Terminate this card?', body: 'This cannot be undone. Subscriptions charged to ····4429 will stop working immediately.', cta: 'Terminate card', ctaBg: '#C93A2E', ctaFg: '#fff', confirm: () => this.setState({ frozen: true, sheet: null, screen: 'cards' }) },
+      pin: { glyph: '#', tint: TINTS.lime[0], tintFg: TINTS.lime[1], title: 'Change your PIN', body: 'We will ask for Face ID, then you can pick a new 4-digit PIN for card ····4429.', cta: 'Continue with Face ID', ctaBg: '#A9EE68', ctaFg: '#14301A', confirm: () => this.setState({ sheet: null }) }
+    };
+    const sh = sheets[s.sheet] || sheets.logout;
+
+    const navColor = (keys) => keys.includes(scr) ? '#0B0C0B' : '#B4BAB2';
+    const sw = (on) => on ? '#A9EE68' : '#DDE1D9';
+    const swX = (on) => on ? '24px' : '3px';
+
+    return {
+      userName: this.props.userName ?? 'Sofia',
+      isSplash: scr === 'splash', isOb: scr === 'ob', isLogin: scr === 'login', isHome: scr === 'home',
+      isPay: scr === 'pay', isSendPick: scr === 'sendPick', isSendAmount: scr === 'sendAmount',
+      isReview: scr === 'review', isProcessing: scr === 'processing', isSuccess: scr === 'success',
+      isFailed: scr === 'failed', isActivity: scr === 'activity', isTxn: scr === 'txn',
+      isCards: scr === 'cards', isCardControls: scr === 'cardControls', isWallet: scr === 'wallet',
+      isNotifs: scr === 'notifs', isProfile: scr === 'profile', isSecurity: scr === 'security',
+      isSupport: scr === 'support',
+      showNav: ['home', 'pay', 'activity', 'cards', 'profile', 'wallet'].includes(scr),
+
+      goOb: this.go('ob'), goLogin: this.go('login'), goHome: this.go('home'), goPay: this.go('pay'),
+      goSend: this.go('sendPick'), goAmount: this.go('sendAmount'), goReview: over ? () => {} : this.go('review'),
+      goActivity: () => this.setState({ screen: 'activity', emptyActivity: false, sheet: null }),
+      goCards: this.go('cards'), goCardControls: this.go('cardControls'), goProfile: this.go('profile'),
+      goWallet: this.go('wallet'), goNotifs: this.go('notifs'), goSecurity: this.go('security'),
+      goSupport: this.go('support'), goRequest: this.go('request'), goScan: this.go('scan'),
+
+      isScan: scr === 'scan', isScanFound: scr === 'scanFound', isRequest: scr === 'request',
+      isRequestSent: scr === 'requestSent',
+      scanTitle: s.scanMode === 'scan' ? 'Scan to pay' : 'Your Finto QR',
+      scanning: s.scanMode === 'scan', showingQr: s.scanMode === 'qr',
+      setScanMode: () => this.setState({ scanMode: 'scan' }), setQrMode: () => this.setState({ scanMode: 'qr' }),
+      scanTabBg: s.scanMode === 'scan' ? '#fff' : 'transparent',
+      scanTabFg: s.scanMode === 'scan' ? '#0B0C0B' : 'rgba(255,255,255,.6)',
+      qrTabBg: s.scanMode === 'qr' ? '#fff' : 'transparent',
+      qrTabFg: s.scanMode === 'qr' ? '#0B0C0B' : 'rgba(255,255,255,.6)',
+      qrCells: this.qr,
+      scanFound: this.go('scanFound'),
+      confirmScan: () => { this.setState({ screen: 'processing' }); setTimeout(() => this.setState({ screen: 'success' }), 1600); },
+
+      reqTargets: [
+        { label: 'A Finto contact', key: 'person' },
+        { label: 'A payment link', key: 'link' }
+      ].map((t) => ({
+        label: t.label, pick: () => this.setState({ reqTo: t.key }),
+        bg: s.reqTo === t.key ? '#0B0C0B' : '#fff',
+        fg: s.reqTo === t.key ? '#fff' : '#3F453F',
+        border: s.reqTo === t.key ? '#0B0C0B' : '#E4E7E1'
+      })),
+      reqToPerson: s.reqTo === 'person', reqToLink: s.reqTo === 'link',
+      reqCta: s.reqTo === 'person' ? 'Send request' : 'Create payment link',
+      reqCtaBg: amtNum > 0 ? '#A9EE68' : '#E4E7E1',
+      reqCtaFg: amtNum > 0 ? '#14301A' : '#A7ADA6',
+      sendRequest: amtNum > 0 ? this.go('requestSent') : () => {},
+      reqSentBody: s.reqTo === 'person'
+        ? 'We asked ' + rec.name + ' for ' + fmt(amtNum) + '. You\u2019ll get a notification the moment they pay.'
+        : 'Your link for ' + fmt(amtNum) + ' is ready. Anyone can open it and pay by card or bank.',
+      reqSlug: 'fs' + String(Math.round(amtNum * 100)).slice(0, 4),
+      doLogin: this.go('home'),
+
+      obTitle: ob.title, obBody: ob.body, obCta: ob.cta, obCardTitle: ob.cardTitle, obCardSub: ob.cardSub,
+      obMetaLabel: ob.metaLabel, obMetaValue: ob.metaValue,
+      obBtn: s.ob === 2 ? 'Get started' : 'Next',
+      obNext: () => s.ob === 2 ? this.setState({ screen: 'login' }) : this.setState({ ob: s.ob + 1 }),
+      obDot0: s.ob === 0 ? '22px' : '5px', obDot1: s.ob === 1 ? '22px' : '5px', obDot2: s.ob === 2 ? '22px' : '5px',
+      obDot0c: s.ob === 0 ? '#0B0C0B' : '#D3D8CF', obDot1c: s.ob === 1 ? '#0B0C0B' : '#D3D8CF', obDot2c: s.ob === 2 ? '#0B0C0B' : '#D3D8CF',
+
+      loginLabel: s.method === 'email' ? 'Email address' : 'Phone number',
+      loginId: s.loginId, setLoginId: (e) => this.setState({ loginId: e.target.value }),
+      pw: s.pw, setPw: (e) => this.setState({ pw: e.target.value }),
+      pwType: s.pwShown ? 'text' : 'password', pwToggleLabel: s.pwShown ? 'Hide' : 'Show',
+      togglePw: () => this.setState({ pwShown: !s.pwShown }),
+      pwBorder: s.loginError ? '#E8A79E' : '#DDE1D9',
+      loginError: s.loginError, toggleLoginError: () => this.setState({ loginError: !s.loginError }),
+      setMethodEmail: () => this.setState({ method: 'email' }), setMethodPhone: () => this.setState({ method: 'phone' }),
+      mEmailBg: s.method === 'email' ? '#fff' : 'transparent', mPhoneBg: s.method === 'phone' ? '#fff' : 'transparent',
+      mEmailFg: s.method === 'email' ? '#0B0C0B' : '#8B918A', mPhoneFg: s.method === 'phone' ? '#0B0C0B' : '#8B918A',
+      mEmailSh: s.method === 'email' ? '0 1px 3px rgba(11,12,11,.12)' : 'none',
+      mPhoneSh: s.method === 'phone' ? '0 1px 3px rgba(11,12,11,.12)' : 'none',
+
+      balanceDisplay: s.balanceHidden ? '••••••' : '$2,450.80',
+      balToggle: s.balanceHidden ? 'Show' : 'Hide',
+      toggleBalance: () => this.setState({ balanceHidden: !s.balanceHidden }),
+      recent: TX.slice(0, 4).map(decorate),
+
+      people: PEOPLE.map(person), filteredPeople: filtered.map(person), noPeople: filtered.length === 0,
+      query: s.query, setQuery: (e) => this.setState({ query: e.target.value }),
+
+      recName: rec.name, recHandle: rec.handle, recInitials: rec.initials, recTint: rec.tint, recTintFg: rec.tintFg,
+      amountDisplay: s.amount === '' ? '0' : s.amount,
+      amountFormatted: fmt(amtNum),
+      amountColor: over ? '#C93A2E' : '#0B0C0B',
+      overLimit: over,
+      continueBg: amtNum > 0 && !over ? '#A9EE68' : '#E4E7E1',
+      continueFg: amtNum > 0 && !over ? '#14301A' : '#A7ADA6',
+      key1: this.press('1'), key2: this.press('2'), key3: this.press('3'), key4: this.press('4'),
+      key5: this.press('5'), key6: this.press('6'), key7: this.press('7'), key8: this.press('8'),
+      key9: this.press('9'), key0: this.press('0'), keyDot: this.press('.'),
+      keyDel: () => this.setState({ amount: s.amount.slice(0, -1) }),
+      confirmPay: () => { this.setState({ screen: 'processing' }); setTimeout(() => this.setState({ screen: 'success' }), 1600); },
+      failPay: this.go('failed'),
+
+      txQuery: s.txQuery, setTxQuery: (e) => this.setState({ txQuery: e.target.value, emptyActivity: false }),
+      filters, groups,
+      activityEmpty: s.emptyActivity || groups.length === 0,
+      activityFilled: !(s.emptyActivity || groups.length === 0),
+      toggleEmpty: () => this.setState({ emptyActivity: !s.emptyActivity }),
+
+      txMerchant: sel.merchant, txAmount: sel.amount, txAmountColor: sel.amountColor, txInitial: sel.initial,
+      txTint: sel.tint, txTintFg: sel.tintFg, txStatus: sel.status, txCategory: sel.cat, txRef: sel.ref,
+      txDate: sel.day + ', ' + sel.time,
+      txStatusBg: sel.status === 'Pending' ? '#FBF0D9' : sel.status === 'Failed' ? '#FDECEA' : '#DCF5B8',
+      txStatusFg: sel.status === 'Pending' ? '#8A6410' : sel.status === 'Failed' ? '#C93A2E' : '#2F5B1E',
+
+      cardBg: s.frozen ? '#3A4740' : '#14301A',
+      cardState: s.frozen ? 'Frozen' : 'Active · Virtual',
+      cardNumber: s.frozen ? '•••• •••• •••• 4429' : '4029  8814  2277  4429',
+      freezeLabel: s.frozen ? 'Unfreeze card' : 'Freeze card',
+      freezeBg: s.frozen ? '#DCF5B8' : '#fff',
+      freezeBorder: s.frozen ? '#BEE690' : '#E4E7E1',
+      freezeFg: s.frozen ? '#2F5B1E' : '#0B0C0B',
+      toggleFreeze: () => this.setState({ frozen: !s.frozen }),
+      swFreeze: sw(s.frozen), swFreezeX: swX(s.frozen),
+      swOnline: sw(s.online), swOnlineX: swX(s.online), toggleOnline: () => this.setState({ online: !s.online }),
+      swAbroad: sw(s.abroad), swAbroadX: swX(s.abroad), toggleAbroad: () => this.setState({ abroad: !s.abroad }),
+      swFace: sw(s.faceId), swFaceX: swX(s.faceId), toggleFaceId: () => this.setState({ faceId: !s.faceId }),
+      swConfirm: sw(s.confirmPay), swConfirmX: swX(s.confirmPay), toggleConfirm: () => this.setState({ confirmPay: !s.confirmPay }),
+      limitLabel: '$' + s.limit.toLocaleString('en-US'),
+      limitPct: Math.min(100, Math.round((1284 / s.limit) * 100)) + '%',
+      limitUp: () => this.setState({ limit: Math.min(5000, s.limit + 500) }),
+      limitDown: () => this.setState({ limit: Math.max(500, s.limit - 500) }),
+
+      accounts: [
+        { symbol: '$', name: 'Main · USD', iban: 'US** **** 4429', balance: '$2,450.80' },
+        { symbol: '€', name: 'Euro balance', iban: 'DE** **** 8102', balance: '€612.40' },
+        { symbol: '£', name: 'Pound balance', iban: 'GB** **** 5530', balance: '£0.00' }
+      ],
+      notifications: [
+        { glyph: '↑', tint: TINTS.lime[0], tintFg: TINTS.lime[1], border: '#BEE690', title: 'Payment sent · $240.00', body: 'Your transfer to Alessia Moretti landed instantly.', time: '2m' },
+        { glyph: '↓', tint: TINTS.forest[0], tintFg: TINTS.forest[1], border: '#E4E7E1', title: 'Stripe payout received', body: '$1,820.00 was added to your Main · USD balance.', time: '1h' },
+        { glyph: '!', tint: '#FDECEA', tintFg: '#C93A2E', border: '#E4E7E1', title: 'New device signed in', body: 'MacBook Pro · Lisbon. If this wasn\u2019t you, secure your account.', time: '4h' },
+        { glyph: '#', tint: '#FBF0D9', tintFg: '#8A6410', border: '#E4E7E1', title: 'Apple Store payment pending', body: '$1,099.00 is being held until the merchant captures it.', time: 'Yest.' },
+        { glyph: '★', tint: TINTS.stone[0], tintFg: TINTS.stone[1], border: '#E4E7E1', title: 'Euro balances are live', body: 'Hold and spend EUR at the real exchange rate.', time: '2d' }
+      ],
+      profileRows: [
+        { glyph: 'ID', label: 'Personal information', hint: 'Name, address, tax details', go: this.go('profile') },
+        { glyph: '⚿', label: 'Security', hint: 'Face ID, password, devices', go: this.go('security') },
+        { glyph: '◫', label: 'Accounts & balances', hint: 'USD, EUR, GBP', go: this.go('wallet') },
+        { glyph: '◈', label: 'Payment preferences', hint: 'Default account, limits', go: this.go('cardControls') },
+        { glyph: '◔', label: 'Notifications', hint: 'Payments, security, product', go: this.go('notifs') },
+        { glyph: '?', label: 'Help & support', hint: 'Chat with us, 24/7', go: this.go('support') }
+      ],
+      railGroups,
+
+      sheetOpen: !!s.sheet, sheetGlyph: sh.glyph, sheetTint: sh.tint, sheetTintFg: sh.tintFg,
+      sheetTitle: sh.title, sheetBody: sh.body, sheetCta: sh.cta, sheetCtaBg: sh.ctaBg, sheetCtaFg: sh.ctaFg,
+      sheetConfirm: sh.confirm, closeSheet: () => this.setState({ sheet: null }),
+      showLogout: () => this.setState({ sheet: 'logout' }),
+      showTerminate: () => this.setState({ sheet: 'terminate' }),
+      showPin: () => this.setState({ sheet: 'pin' }),
+
+      navHome: navColor(['home']), navPay: navColor(['pay', 'sendPick', 'sendAmount', 'review', 'scan', 'scanFound', 'request', 'requestSent']),
+      navAct: navColor(['activity', 'txn']), navCards: navColor(['cards', 'cardControls']),
+      navProfile: navColor(['profile', 'security', 'notifs'])
+    };
+  }
+
+  press = (d) => () => {
+    const cur = this.state.amount;
+    if (d === '.' && cur.includes('.')) return;
+    if (cur.includes('.') && cur.split('.')[1].length >= 2) return;
+    if (cur.replace('.', '').length >= 7) return;
+    this.setState({ amount: cur === '0' && d !== '.' ? d : cur + d });
+  };
+}
+</script>
+</body>
+</html>

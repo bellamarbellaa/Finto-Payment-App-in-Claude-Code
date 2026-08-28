@@ -1,0 +1,39 @@
+# ---------------------------------------------------------------- secrets
+# Never commit these. .env holds the Supabase password, JWT signing keys and
+# the cookie secret — anything here on a public repo is compromised within
+# minutes, because bots scrape GitHub for exactly this.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+supabase-ca.crt
+
+# ------------------------------------------------------------ dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# ------------------------------------------------------------------ builds
+dist/
+build/
+.expo/
+*.tsbuildinfo
+
+# ------------------------------------------------------------------- tools
+# Claude Design's runtime and bundle — editor internals, not project source.
+_ds/
+support.js
+.thumbnail
+
+# Unrelated personal files that happen to live in this folder.
+uploads/
+
+# ------------------------------------------------------------------- local
+*.log
+npm-debug.log*
+coverage/
+.DS_Store
+.idea/
+.vscode/
+expo-qr.png

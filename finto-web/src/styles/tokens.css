@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Finto design tokens — lifted directly from the design file so the built
+   app and the prototype resolve to the same values.
+   8pt spacing · 16/18/20/26px radii · Manrope 500–800
+   Lime for primary action, forest for balance surfaces.
+   ========================================================================== */
+
+:root {
+  /* Ink and neutrals */
+  --ink: #0B0C0B;
+  --ink-2: #3F453F;
+  --muted: #6B726C;
+  --faint: #9AA09A;
+  --hairline: #E4E7E1;
+  --hairline-2: #D3D8CF;
+
+  /* Surfaces */
+  --paper: #F6F7F4;
+  --surface: #FFFFFF;
+  --surface-2: #F1F3EE;
+  --surface-3: #EDEFEA;
+
+  /* Brand */
+  --forest: #14301A;
+  --forest-2: #3A4740;      /* the frozen-card grey from the design */
+  --lime: #A9EE68;
+  --lime-2: #96E44F;
+  --lime-wash: #DCF5B8;
+  --lime-deep: #2F5B1E;
+
+  /* Semantic */
+  --income: #2E7D46;
+  --danger: #C93A2E;
+  --danger-bg: #FDECEA;
+  --warn: #8A6410;
+  --warn-bg: #FBF0D9;
+
+  /* Tints — the avatar chip palette */
+  --tint-lime-bg: #DCF5B8;      --tint-lime-fg: #2F5B1E;
+  --tint-forest-bg: #DDE7DC;    --tint-forest-fg: #14301A;
+  --tint-sand-bg: #F3EBDA;      --tint-sand-fg: #7A5C21;
+  --tint-sky-bg: #DEE9F2;       --tint-sky-fg: #2C4F6B;
+  --tint-stone-bg: #EDEFEA;     --tint-stone-fg: #4A514A;
+
+  /* Radii */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 20px;
+  --r-2xl: 26px;
+  --r-3xl: 28px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(11, 12, 11, .04);
+  --shadow-md: 0 8px 24px -12px rgba(11, 12, 11, .14);
+  --shadow-card: 0 22px 40px -24px rgba(11, 12, 11, .5);
+
+  --sans: Manrope, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+/* Amounts line up in columns only with tabular figures. */
+.tnum { font-variant-numeric: tabular-nums; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+::selection { background: var(--lime); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Scrollbars stay out of the way but remain usable. */
+* { scrollbar-width: thin; scrollbar-color: var(--hairline-2) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--hairline-2);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track { background: transparent; }

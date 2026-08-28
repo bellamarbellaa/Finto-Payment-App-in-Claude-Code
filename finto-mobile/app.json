@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Finto",
+    "slug": "finto",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "finto",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#14301A",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.finto.mobile",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Finto uses the camera to scan payment QR codes.",
+        "NSFaceIDUsageDescription": "Finto uses Face ID to unlock the app.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "app.finto.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#14301A"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.USE_BIOMETRIC"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Finto uses the camera to scan payment QR codes."
+        }
+      ],
+      "expo-asset"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "apiUrl": "http://localhost:4000"
+    }
+  }
+}

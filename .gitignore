@@ -37,3 +37,7 @@ coverage/
 .idea/
 .vscode/
 expo-qr.png
+
+# Carousel intermediates — the generator in docs/build regenerates them.
+docs/build/carousel.html
+docs/build/slide-*.png

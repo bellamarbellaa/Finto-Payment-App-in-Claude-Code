@@ -60,6 +60,16 @@ const SEED_CONTACTS = [
   { name: 'Tomás Ruiz', handle: '@truiz', tint: 'forest' }
 ];
 
+/**
+ * When the accounts were opened: ten days before the earliest seeded
+ * transaction, so the ledger reads in a sensible order.
+ */
+const OPENED_AT = (() => {
+  const year = new Date().getUTCFullYear();
+  const earliest = new Date(`Mar 09 ${year} 08:31:00 UTC`);
+  return new Date(earliest.getTime() - 10 * 86_400_000);
+})();
+
 /** "Mar 12" + "09:14" in the current year, as UTC. */
 function dateOf(day: string, time: string): Date {
   const year = new Date().getUTCFullYear();
@@ -165,8 +175,14 @@ async function seed() {
           counterpartyName: 'Opening balance',
           category: 'Top-up',
           tint: 'forest',
-          occurredAt: new Date(Date.now() - 45 * 86_400_000),
-          settledAt: new Date(Date.now() - 45 * 86_400_000)
+          /*
+           * An opening balance is the oldest event in an account's life, so it
+           * must predate the seeded activity — otherwise it sorts to the top of
+           * the feed and reads as if the account were funded after the money
+           * was already spent.
+           */
+          occurredAt: OPENED_AT,
+          settledAt: OPENED_AT
         })
         .returning();
 

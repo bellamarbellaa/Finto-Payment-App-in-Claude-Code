@@ -37,7 +37,16 @@ const schema = z.object({
   COOKIE_SECURE: z
     .string()
     .default('false')
-    .transform((v) => v === 'true')
+    .transform((v) => v === 'true'),
+  /**
+   * 'lax' is right when the web app and the API share a site. Once they are
+   * deployed to different domains — say a Vercel front end calling an API on
+   * Railway — the browser treats every request as cross-site and will not send
+   * a 'lax' cookie at all, so the refresh token silently never arrives and
+   * users appear signed out on reload. That case needs 'none', which browsers
+   * only honour together with Secure (and therefore HTTPS).
+   */
+  COOKIE_SAMESITE: z.enum(['lax', 'none', 'strict']).default('lax')
 });
 
 const parsed = schema.safeParse(process.env);

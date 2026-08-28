@@ -60,8 +60,10 @@ export const REFRESH_COOKIE = 'finto_refresh';
  */
 export const refreshCookieOptions = {
   httpOnly: true,
-  secure: env.COOKIE_SECURE,
-  sameSite: 'lax' as const,
+  // SameSite=None is meaningless without Secure, and browsers drop such
+  // cookies outright — so asking for 'none' forces Secure on.
+  secure: env.COOKIE_SECURE || env.COOKIE_SAMESITE === 'none',
+  sameSite: env.COOKIE_SAMESITE,
   path: '/v1/auth',
   domain: env.COOKIE_DOMAIN || undefined,
   maxAge: env.REFRESH_TOKEN_TTL_DAYS * 24 * 60 * 60

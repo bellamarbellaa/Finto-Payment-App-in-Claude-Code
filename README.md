@@ -17,6 +17,33 @@ The project includes a TypeScript backend, React web app, and React Native mobil
 
 ---
 
+## A look at it
+
+<p align="center">
+  <img src="docs/screenshots/04-home-mobile.png" width="250" alt="Home screen with total balance and quick actions">
+  <img src="docs/screenshots/05-activity-mobile.png" width="250" alt="Activity feed grouped by day">
+  <img src="docs/screenshots/09-send-mobile.png" width="250" alt="Sending money with the amount keypad">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/06-cards-mobile.png" width="250" alt="Card with freeze control and monthly spending limit">
+  <img src="docs/screenshots/08-accounts-mobile.png" width="250" alt="Multi-currency account balances">
+  <img src="docs/screenshots/07-pay-mobile.png" width="250" alt="Choosing who to pay">
+</p>
+
+The same screens on a desktop browser — one codebase, with the tab bar becoming
+a side rail:
+
+<p align="center">
+  <img src="docs/screenshots/02-home-desktop.png" width="820" alt="Finto home screen on desktop">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/01-login-desktop.png" width="820" alt="Finto sign-in screen">
+</p>
+
+---
+
 ## What it does
 
 * Hold balances across **14 currencies**

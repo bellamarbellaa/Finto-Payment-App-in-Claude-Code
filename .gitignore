@@ -16,11 +16,10 @@ node_modules/
 
 # ------------------------------------------------------------------ builds
 dist/
-build/
 .expo/
 *.tsbuildinfo
 
-# ------------------------------------------------------------------- tools
+# ---------------------------------------------------------- editor internals
 # Claude Design's runtime and bundle — editor internals, not project source.
 _ds/
 support.js
@@ -38,6 +37,5 @@ coverage/
 .vscode/
 expo-qr.png
 
-# Carousel intermediates — the generator in docs/build regenerates them.
-docs/build/carousel.html
-docs/build/slide-*.png
+# Carousel intermediates — tools/make-carousel.mjs regenerates them.
+docs/build/

@@ -5,7 +5,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "//": "The app is a single-page app: every route must serve index.html, or a refresh on /activity returns 404.",
       "source": "/((?!assets/).*)",
       "destination": "/index.html"
     }

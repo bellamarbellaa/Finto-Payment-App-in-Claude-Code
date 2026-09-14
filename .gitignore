@@ -39,3 +39,6 @@ expo-qr.png
 
 # Carousel intermediates — tools/make-carousel.mjs regenerates them.
 docs/build/
+
+# Isolated workspaces for agent-driven implementation work.
+.worktrees/

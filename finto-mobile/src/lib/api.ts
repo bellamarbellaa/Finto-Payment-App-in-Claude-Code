@@ -73,5 +73,8 @@ export const api = createFintoClient({
     name: `${Platform.OS === 'ios' ? 'iPhone' : 'Android'} · Finto`,
     platform: Platform.OS === 'ios' ? 'ios' : 'android'
   },
-  onSessionExpired: () => onExpired?.()
+  onSessionExpired: () => onExpired?.(),
+  // The API's Vercel deployment is serverless and cannot hold a WebSocket
+  // open — see finto-backend/api/index.ts. Render/local dev keep the socket.
+  realtimeTransport: Constants.expoConfig?.extra?.realtimeMode === 'poll' ? 'poll' : 'websocket'
 });

@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { FintoApiError } from '@finto/api-client';
 import { useAuth } from '../lib/auth';
 import { EyeIcon } from '../components/Icons';
-import { BrandReveal } from '../components/BrandReveal';
+import { AmbientBackdrop } from '../components/AmbientBackdrop';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -42,6 +42,7 @@ export function Login() {
         {/* The forest panel is the brand surface from the design; on a phone
             width it collapses away so the form gets the whole screen. */}
         <aside className="login-brand">
+          <AmbientBackdrop />
           <div className="login-brand-inner">
             {/* On the forest panel the rail's forest tile would vanish, so the
                 mark inverts: lime ground, forest letter. */}
@@ -61,8 +62,6 @@ export function Login() {
                 <strong>Instant</strong>
               </div>
             </div>
-
-            <BrandReveal src="/brand-preview.png" alt="The Finto home screen, showing balances and recent activity" />
           </div>
         </aside>
 

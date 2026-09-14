@@ -41,7 +41,7 @@ export const pool = new pg.Pool({
   ssl: sslConfig(),
   // A hosted database is further away and caps connections far lower than a
   // local one, so the pool stays small and waits longer to connect.
-  max: env.isTest ? 5 : 10,
+  max: env.isTest ? 5 : env.DB_POOL_MAX,
   idleTimeoutMillis: 30_000,
   connectionTimeoutMillis: 20_000,
   application_name: 'finto-api'

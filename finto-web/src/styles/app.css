@@ -381,10 +381,76 @@
 .login-split { display: grid; grid-template-columns: 1fr; min-height: 100vh; }
 @media (min-width: 920px) { .login-split { grid-template-columns: 1.05fr 1fr; } }
 
-.login-brand { display: none; background: var(--forest); color: #fff; padding: 48px; }
+.login-brand { display: none; position: relative; overflow: hidden; background: var(--forest); color: #fff; padding: 48px; }
 @media (min-width: 920px) { .login-brand { display: grid; place-items: center; } }
 
-.login-brand-inner { max-width: 400px; display: flex; flex-direction: column; gap: 20px; }
+.login-brand-inner { position: relative; z-index: 1; max-width: 400px; display: flex; flex-direction: column; gap: 20px; }
+
+/* ------------------------------------------------- ambient backdrop ---- */
+
+.ambient-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .55;
+}
+.ambient-glow-a {
+  width: 360px; height: 360px;
+  right: -110px; top: -90px;
+  background: radial-gradient(circle, var(--lime) 0%, transparent 70%);
+}
+.ambient-glow-b {
+  width: 320px; height: 320px;
+  left: -100px; bottom: -80px;
+  background: radial-gradient(circle, #3d6b4a 0%, transparent 70%);
+}
+
+.ambient-stage {
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  width: 300px;
+  height: 260px;
+  perspective: 1100px;
+  pointer-events: none;
+}
+
+.ambient-card {
+  width: 260px;
+  height: 190px;
+  margin: 40px;
+  border-radius: var(--r-2xl);
+  background: linear-gradient(155deg, rgba(255,255,255,.14), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 40px 70px -30px rgba(0,0,0,.6);
+  transform-style: preserve-3d;
+  overflow: hidden;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.ambient-card-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255,255,255,.22) 0%, transparent 35%, transparent 65%, rgba(169,238,104,.16) 100%);
+}
+.ambient-card-row {
+  position: relative;
+  height: 10px;
+  width: 78%;
+  border-radius: 999px;
+  background: rgba(255,255,255,.22);
+}
+.ambient-card-row.short { width: 46%; background: rgba(169,238,104,.55); }
 .login-mark {
   width: 46px; height: 46px;
   border-radius: 15px;
@@ -405,20 +471,6 @@
 .login-facts span { font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,.55); }
 .login-facts strong { font-size: 16px; font-weight: 800; letter-spacing: -.02em; color: var(--lime); }
 
-.brand-reveal { perspective: 1200px; }
-.brand-reveal-card {
-  border-radius: var(--r-2xl);
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 30px 60px -28px rgba(0,0,0,.55), 0 12px 24px -12px rgba(0,0,0,.4);
-}
-.brand-reveal-card img {
-  display: block;
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  object-position: top;
-}
 
 .login-form-wrap { display: grid; place-items: center; padding: 32px 22px; }
 .login-form { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 16px; }

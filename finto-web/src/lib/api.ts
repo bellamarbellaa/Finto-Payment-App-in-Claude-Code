@@ -28,7 +28,10 @@ export const api = createFintoClient({
   tokens: browserTokenStore(),
   credentials: 'include',
   device: { name: deviceName(), platform: 'web' },
-  onSessionExpired: () => onExpired?.()
+  onSessionExpired: () => onExpired?.(),
+  // The API's Vercel deployment is serverless and cannot hold a WebSocket
+  // open — see finto-backend/api/index.ts. Render/local dev keep the socket.
+  realtimeTransport: import.meta.env.VITE_REALTIME_MODE === 'poll' ? 'poll' : 'websocket'
 });
 
 function deviceName(): string {

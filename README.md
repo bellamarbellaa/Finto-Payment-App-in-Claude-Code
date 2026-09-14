@@ -1,5 +1,13 @@
 # Finto Payment App
 
+**[Try it live](https://finto-payment-app-in-claude-code.vercel.app)** — sign in as
+`sofia@marengo.studio` / `sofia2026-finto`. This is the real app talking to a real
+API ([`finto-backend`](finto-backend), serverless on Vercel) and a real Postgres
+database (Supabase) — not a mock or a static demo.
+
+> Hosted on free tiers, so the first request after a quiet period can take a
+> few seconds while the database connection wakes up.
+
 A fictional multi-currency banking app built from an original UI concept and developed into a working full-stack product with Claude Code.
 
 Finto lets users manage balances across multiple currencies, send and request money, pay through QR codes, track transactions, and manage card settings across web and mobile.

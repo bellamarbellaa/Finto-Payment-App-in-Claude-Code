@@ -8,6 +8,13 @@ const schema = z.object({
 
   DATABASE_URL: z.string().url(),
   /**
+   * A long-running process (Render, local dev) wants a real pool. A
+   * serverless deployment (Vercel) wants this near 1 — many warm function
+   * instances can run at once, each with its own pool, and the Supabase
+   * session pooler caps total concurrent connections.
+   */
+  DB_POOL_MAX: z.coerce.number().int().positive().default(10),
+  /**
    * 'auto' (the default) turns TLS on for every host except localhost.
    * Managed Postgres — Supabase, Neon, RDS — always requires it.
    */

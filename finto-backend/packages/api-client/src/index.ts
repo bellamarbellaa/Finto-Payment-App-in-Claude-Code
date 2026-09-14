@@ -78,6 +78,14 @@ export interface ClientOptions {
   device?: { name: string; platform: 'ios' | 'android' | 'web'; pushToken?: string };
   onSessionExpired?: () => void;
   fetch?: typeof fetch;
+  /**
+   * 'websocket' (the default) pushes events instantly over a persistent
+   * connection — what every long-running deployment (Render, local dev)
+   * should use. 'poll' is for a stateless host that cannot hold a socket
+   * open (a Vercel serverless function): it asks `GET /v1/realtime/poll`
+   * every few seconds instead, behind the exact same handler interface.
+   */
+  realtimeTransport?: 'websocket' | 'poll';
 }
 
 interface RequestOptions {
@@ -453,6 +461,50 @@ export function createFintoClient(options: ClientOptions) {
       onOpen?: () => void;
       onClose?: () => void;
     }) {
+      if (options.realtimeTransport === 'poll') {
+        const POLL_INTERVAL_MS = 4000;
+        let stopped = false;
+        let timer: ReturnType<typeof setTimeout> | null = null;
+        let lastRevision: number | null = null;
+        let open = false;
+
+        const tick = async () => {
+          if (stopped) return;
+
+          try {
+            const result = await request<{ revision: number; unread: number }>('/v1/realtime/poll');
+
+            if (!open) {
+              open = true;
+              handlers.onOpen?.();
+            }
+
+            handlers.onEvent({ type: 'connected', data: { unread: result.unread }, at: new Date().toISOString() });
+
+            if (lastRevision !== null && result.revision !== lastRevision) {
+              handlers.onEvent({ type: 'account.balance_changed', data: {}, at: new Date().toISOString() });
+            }
+            lastRevision = result.revision;
+          } catch {
+            if (open) {
+              open = false;
+              handlers.onClose?.();
+            }
+          } finally {
+            if (!stopped) timer = setTimeout(() => void tick(), POLL_INTERVAL_MS);
+          }
+        };
+
+        void tick();
+
+        return {
+          close() {
+            stopped = true;
+            if (timer) clearTimeout(timer);
+          }
+        };
+      }
+
       let socket: WebSocket | null = null;
       let closedByUs = false;
       let attempt = 0;

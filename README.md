@@ -8,6 +8,10 @@ database (Supabase) — not a mock or a static demo.
 > Hosted on free tiers, so the first request after a quiet period can take a
 > few seconds while the database connection wakes up.
 
+On a phone, install [Expo Go](https://expo.dev/go), then open
+**[the mobile build](https://expo.dev/accounts/bellaelpantja/projects/finto/updates/8997b63e-e3af-426f-b289-39e187ec5fd9)**
+— same account, same live API.
+
 A fictional multi-currency banking app built from an original UI concept and developed into a working full-stack product with Claude Code.
 
 Finto lets users manage balances across multiple currencies, send and request money, pay through QR codes, track transactions, and manage card settings across web and mobile.

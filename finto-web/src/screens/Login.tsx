@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { FintoApiError } from '@finto/api-client';
 import { useAuth } from '../lib/auth';
 import { EyeIcon } from '../components/Icons';
+import { BrandReveal } from '../components/BrandReveal';
 
 export function Login() {
   const { signIn } = useAuth();
@@ -60,6 +61,8 @@ export function Login() {
                 <strong>Instant</strong>
               </div>
             </div>
+
+            <BrandReveal src="/brand-preview.png" alt="The Finto home screen, showing balances and recent activity" />
           </div>
         </aside>
 

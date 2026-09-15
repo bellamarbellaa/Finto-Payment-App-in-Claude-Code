@@ -1,6 +1,14 @@
 # Finto Payment App
 
-## 🟢 Try it now
+A full-stack payment app that accommodates web and mobile clients, connecting a serverless Vercel API to a Supabase PostgreSQL database. Testing uses real persistent transaction data rather than mocked static flows.
+
+A fictional multi-currency banking app built from an original UI concept and developed into a working full-stack product with Claude Code.
+
+Finto lets users manage balances across multiple currencies, send and request money, pay through QR codes, track transactions, and manage card settings across web and mobile.
+
+---
+
+## Try it out now
 
 This is the real app — a real API ([`finto-backend`](finto-backend), serverless
 on Vercel) talking to a real Postgres database (Supabase). Not a mock, not a
@@ -26,24 +34,7 @@ static demo.
 
 ---
 
-A fictional multi-currency banking app built from an original UI concept and developed into a working full-stack product with Claude Code.
-
-Finto lets users manage balances across multiple currencies, send and request money, pay through QR codes, track transactions, and manage card settings across web and mobile.
-
-The project includes a TypeScript backend, React web app, and React Native mobile app — all connected through a shared API and shared types.
-
-|              |                                                                                       |
-| ------------ | ------------------------------------------------------------------------------------- |
-| **Design**   | Original UI/UX design · 15 screens                                                    |
-| **Backend**  | TypeScript · Fastify · PostgreSQL · Drizzle ORM                                       |
-| **Web**      | React 19 · Vite · React Router                                                        |
-| **Mobile**   | React Native · Expo SDK 54 · Expo Router                                              |
-| **Database** | Supabase · PostgreSQL 17                                                              |
-| **Testing**  | 53 tests covering money handling, ledger integrity, authentication, and API behaviour |
-
----
-
-## A look at it
+## Mobile
 
 <p align="center">
   <img src="docs/screenshots/04-home-mobile.png" width="250" alt="Home screen with total balance and quick actions">
@@ -51,22 +42,65 @@ The project includes a TypeScript backend, React web app, and React Native mobil
   <img src="docs/screenshots/09-send-mobile.png" width="250" alt="Sending money with the amount keypad">
 </p>
 
-<p align="center">
-  <img src="docs/screenshots/06-cards-mobile.png" width="250" alt="Card with freeze control and monthly spending limit">
-  <img src="docs/screenshots/08-accounts-mobile.png" width="250" alt="Multi-currency account balances">
-  <img src="docs/screenshots/07-pay-mobile.png" width="250" alt="Choosing who to pay">
-</p>
+## Desktop
 
 The same screens on a desktop browser — one codebase, with the tab bar becoming
 a side rail:
 
 <p align="center">
-  <img src="docs/screenshots/02-home-desktop.png" width="820" alt="Finto home screen on desktop">
+  <img src="docs/screenshots/02-home-desktop.png" width="410" alt="Finto home screen on desktop">
+  <img src="docs/screenshots/01-login-desktop.png" width="410" alt="Finto sign-in screen">
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/01-login-desktop.png" width="820" alt="Finto sign-in screen">
+  <img src="docs/screenshots/03-activity-desktop.png" width="410" alt="Activity feed on desktop">
+  <img src="docs/screenshots/10-cards-desktop.png" width="410" alt="Card management on desktop">
 </p>
+
+---
+
+## Components
+
+The project includes a TypeScript backend, React web app, and React Native mobile app — all connected through a shared API and shared types.
+
+|              |                                                   |
+| ------------ | ------------------------------------------------- |
+| **Design**   | Original UI/UX design · 15 screens                 |
+| **Backend**  | TypeScript · Fastify · PostgreSQL · Drizzle ORM    |
+| **Web**      | React 19 · Vite · React Router                     |
+| **Mobile**   | React Native · Expo SDK 54 · Expo Router           |
+| **Database** | Supabase · PostgreSQL 17                           |
+
+---
+
+## Structure
+
+```text
+                    ┌──────────────┐
+                    │   Supabase   │
+                    │ PostgreSQL 17│
+                    └──────▲───────┘
+                           │
+                    ┌──────┴───────┐
+                    │     API      │
+                    │ Fastify + WS │
+                    └──▲────────▲──┘
+                       │        │
+                 REST + WS  REST + WS
+                       │        │
+              ┌────────┘        └────────┐
+              ▼                          ▼
+       ┌─────────────┐            ┌─────────────┐
+       │   Web App   │            │ Mobile App  │
+       │   React     │            │React Native │
+       └─────────────┘            └─────────────┘
+                 \                  /
+                  \                /
+                   └── Shared API ─┘
+                      + shared types
+```
+
+Both front ends use the same API and shared type definitions, keeping the web and mobile experiences consistent.
 
 ---
 
@@ -115,37 +149,6 @@ The system also handles concurrent payments safely and prevents balances from be
 Payment requests support idempotency keys, so retrying a request after a network failure does not accidentally create a second payment.
 
 If the same request is sent again, the original result is returned instead of processing the payment twice.
-
----
-
-## How it fits together
-
-```text
-                    ┌──────────────┐
-                    │   Supabase   │
-                    │ PostgreSQL 17│
-                    └──────▲───────┘
-                           │
-                    ┌──────┴───────┐
-                    │     API      │
-                    │ Fastify + WS │
-                    └──▲────────▲──┘
-                       │        │
-                 REST + WS  REST + WS
-                       │        │
-              ┌────────┘        └────────┐
-              ▼                          ▼
-       ┌─────────────┐            ┌─────────────┐
-       │   Web App   │            │ Mobile App  │
-       │   React     │            │React Native │
-       └─────────────┘            └─────────────┘
-                 \                  /
-                  \                /
-                   └── Shared API ─┘
-                      + shared types
-```
-
-Both front ends use the same API and shared type definitions, keeping the web and mobile experiences consistent.
 
 ---
 
